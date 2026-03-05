@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>iPhone 17 Pro Theme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #000;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1000;
+            transition: color 0.3s;
+        }
+
+        .status-bar.dark { color: #000; }
+        
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-right {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .signal-bars {
+            display: flex;
+            gap: 2px;
+            align-items: flex-end;
+            height: 12px;
+        }
+
+        .signal-bar {
+            width: 3px;
+            background: currentColor;
+            border-radius: 1px;
+        }
+
+        .signal-bar:nth-child(1) { height: 4px; }
+        .signal-bar:nth-child(2) { height: 6px; }
+        .signal-bar:nth-child(3) { height: 8px; }
+        .signal-bar:nth-child(4) { height: 10px; }
+
+        .wifi-icon {
+            width: 16px;
+            height: 12px;
+            position: relative;
+        }
+
+        .battery {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .battery-body {
+            width: 25px;
+            height: 12px;
+            border: 1.5px solid currentColor;
+            border-radius: 3px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+
+        .battery-level {
+            width: 80%;
+            height: 100%;
+            background: currentColor;
+            border-radius: 1px;
+        }
+
+        .battery-cap {
+            width: 2px;
+            height: 6px;
+            background: currentColor;
+            border-radius: 0 1px 1px 0;
+        }
+
+        /* Home Screen */
+        .home-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .wallpaper-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .wallpaper-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .wallpaper-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .wallpaper-4 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .wallpaper-5 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        /* Dynamic Island */
+        .dynamic-island {
+            position: fixed;
+            top: 11px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 126px;
+            height: 37px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 1001;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .dynamic-island.expanded {
+            width: 360px;
+            height: 160px;
+            border-radius: 40px;
+        }
+
+        .island-content {
+            color: white;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dynamic-island.expanded .island-content {
+            opacity: 1;
+        }
+
+        .island-camera {
+            width: 12px;
+            height: 12px;
+            background: #1a1a2e;
+            border-radius: 50%;
+            position: absolute;
+            right: 15px;
+            box-shadow: inset 0 0 2px rgba(255,255,255,0.2);
+        }
+
+        /* App Grid */
+        .app-grid {
+            position: fixed;
+            top: 100px;
+            left: 0;
+            right: 0;
+            bottom: 120px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px 10px;
+            padding: 0 20px;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .app-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .app-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .app-icon:active {
+            transform: scale(0.9);
+        }
+
+        .app-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+        }
+
+        .app-name {
+            color: white;
+            font-size: 11px;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            max-width: 70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Specific App Colors */
+        .app-phone { background: linear-gradient(135deg, #34c759 0%, #30d158 100%) !important; }
+        .app-mail { background: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%) !important; }
+        .app-safari { background: linear-gradient(135deg, #00c7be 0%, #00d2ff 100%) !important; }
+        .app-music { background: linear-gradient(135deg, #fa2d48 0%, #ff375f 100%) !important; }
+        .app-settings { background: linear-gradient(135deg, #8e8e93 0%, #aeaeb2 100%) !important; }
+        .app-camera { background: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%) !important; }
+        .app-photos { background: linear-gradient(135deg, #ffffff 0%, #f2f2f7 100%) !important; color: #000; }
+        .app-maps { background: linear-gradient(135deg, #34c759 0%, #30d158 100%) !important; }
+        .app-weather { background: linear-gradient(135deg, #007aff 0%, #5856d6 100%) !important; }
+        .app-calendar { background: linear-gradient(135deg, #ffffff 0%, #f2f2f7 100%) !important; color: #ff3b30; }
+        .app-notes { background: linear-gradient(135deg, #ffcc00 0%, #ff9500 100%) !important; }
+        .app-reminders { background: linear-gradient(135deg, #007aff 0%, #5856d6 100%) !important; }
+
+        /* Dock */
+        .dock {
+            position: fixed;
+            bottom: 20px;
+            left: 10px;
+            right: 10px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 35px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dock .app-icon-wrapper {
+            width: 55px;
+            height: 55px;
+        }
+
+        /* App Library Button */
+        .app-library-btn {
+            position: fixed;
+            bottom: 125px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Page Indicators */
+        .page-indicators {
+            position: fixed;
+            bottom: 115px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: white;
+            width: 20px;
+            border-radius: 4px;
+        }
+
+        /* Control Center */
+        .control-center {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            padding: 50px 20px 20px;
+        }
+
+        .control-center.active {
+            right: 0;
+        }
+
+        .cc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .cc-module {
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 15px;
+            color: white;
+        }
+
+        .cc-module.large {
+            grid-column: span 2;
+            height: 120px;
+        }
+
+        .cc-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .cc-icon.active {
+            background: #34c759;
+        }
+
+        .cc-slider {
+            width: 100%;
+            height: 150px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* App Drawer */
+        .app-drawer {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            height: 90%;
+            background: rgba(30,30,30,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px 30px 0 0;
+            z-index: 1500;
+            transition: bottom 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .app-drawer.active {
+            bottom: 0;
+        }
+
+        .drawer-handle {
+            width: 40px;
+            height: 5px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+            margin: 0 auto 20px;
+        }
+
+        .drawer-search {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 10px 15px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .drawer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .drawer-folder {
+            aspect-ratio: 1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+            gap: 5px;
+            align-content: flex-start;
+        }
+
+        .folder-mini {
+            width: calc(50% - 2.5px);
+            height: calc(50% - 2.5px);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+        }
+
+        /* Lock Screen */
+        .lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 30px 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .lock-screen.hidden {
+            transform: translateY(-100%);
+        }
+
+        .lock-time {
+            color: white;
+            font-size: 80px;
+            font-weight: 200;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .lock-date {
+            color: white;
+            font-size: 20px;
+            font-weight: 400;
+            margin-top: 10px;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+        }
+
+        .lock-bottom {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lock-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .home-indicator {
+            width: 135px;
+            height: 5px;
+            background: white;
+            border-radius: 3px;
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Settings Modal */
+        .settings-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 2500;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .settings-modal.active {
+            transform: translateY(0);
+        }
+
+        .settings-header {
+            background: rgba(30,30,30,0.8);
+            backdrop-filter: blur(20px);
+            padding: 50px 20px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .settings-title {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .settings-section {
+            padding: 20px;
+        }
+
+        .settings-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .wallpaper-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .wallpaper-option {
+            aspect-ratio: 9/19;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .wallpaper-option.active {
+            border-color: #007aff;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .charging .battery-level {
+            animation: pulse 2s infinite;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 50px;
+            left: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 15px;
+            transform: translateY(-200%);
+            transition: transform 0.3s ease;
+            z-index: 999;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+        }
+
+        .notif-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #007aff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .notif-content h4 {
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .notif-content p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Boot Screen */
+        .boot-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+        }
+
+        .boot-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .apple-logo {
+            width: 100px;
+            height: 100px;
+            fill: white;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Widgets */
+        .widget {
+            grid-column: span 4;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 15px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .widget-content {
+            font-size: 32px;
+            font-weight: 300;
+        }
+
+        .weather-widget {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .weather-temp {
+            font-size: 48px;
+            font-weight: 200;
+        }
+
+        .weather-desc {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Boot Screen -->
+    <div class="boot-screen" id="bootScreen">
+        <svg class="apple-logo" viewBox="0 0 170 170">
+            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.197-2.12-9.973-3.17-14.34-3.17-4.58 0-9.492 1.05-14.746 3.17-5.262 2.13-9.501 3.24-12.742 3.35-4.929.21-9.842-1.96-14.746-6.52-3.13-2.73-7.045-7.41-11.735-14.04-5.032-7.08-9.169-15.29-12.41-24.65-3.471-10.11-5.211-19.9-5.211-29.378 0-10.857 2.346-20.221 7.045-28.1 3.693-6.303 8.606-11.275 14.755-14.925s12.793-5.51 19.948-5.629c3.915 0 9.049 1.211 15.429 3.591 6.362 2.388 10.447 3.599 12.238 3.599 1.339 0 5.877-1.416 13.57-4.239 7.275-2.618 13.415-3.702 18.445-3.275 13.63 1.1 23.87 6.473 30.68 16.153-12.19 7.386-18.22 17.731-18.1 31.002.11 10.337 3.86 18.939 11.23 25.769 3.34 3.17 7.07 5.62 11.22 7.36-.9 2.61-1.85 5.11-2.86 7.51zM119.11 7.24c0 8.102-2.966 15.667-8.895 22.697-7.127 8.324-15.675 13.124-24.965 12.586-1.182-8.564 1.101-16.977 6.858-25.243 2.89-4.373 6.534-7.955 10.946-10.748 4.396-2.762 8.534-4.341 12.393-4.756.17 1.194.25 2.388.25 3.576z"/>
+        </svg>
+    </div>
+
+    <!-- Lock Screen -->
+    <div class="lock-screen wallpaper-1" id="lockScreen">
+        <div class="lock-top">
+            <div style="text-align: center;">
+                <div class="lock-time" id="lockTime">09:41</div>
+                <div class="lock-date" id="lockDate">Senin, 5 Maret</div>
+            </div>
+        </div>
+        
+        <div class="lock-bottom">
+            <div class="lock-btn" onclick="toggleFlashlight()">🔦</div>
+            <div class="lock-btn" onclick="openCamera()">📷</div>
+        </div>
+        <div class="home-indicator" onclick="unlockPhone()"></div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar" id="statusBar">
+        <div class="status-left">
+            <span id="carrier">Indosat</span>
+            <div class="signal-bars">
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+            </div>
+            <div class="wifi-icon">📶</div>
+        </div>
+        <div class="status-right">
+            <span id="batteryPercent">80%</span>
+            <div class="battery">
+                <div class="battery-body">
+                    <div class="battery-level" id="batteryLevel"></div>
+                </div>
+                <div class="battery-cap"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Island -->
+    <div class="dynamic-island" id="dynamicIsland" onclick="toggleIsland()">
+        <div class="island-camera"></div>
+        <div class="island-content">
+            <span>🎵</span>
+            <div>
+                <div style="font-weight: 600;">Sedang Diputar</div>
+                <div style="font-size: 11px; opacity: 0.8;">Artis - Lagu</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Screen -->
+    <div class="home-screen wallpaper-1" id="homeScreen">
+        <!-- App Grid -->
+        <div class="app-grid" id="appGrid">
+            <!-- Widget -->
+            <div class="widget">
+                <div class="widget-header">
+                    <span>Jakarta</span>
+                    <span>A13</span>
+                </div>
+                <div class="weather-widget">
+                    <div class="weather-temp">28°</div>
+                    <div>
+                        <div style="font-size: 24px;">☀️</div>
+                        <div class="weather-desc">Cerah Berawan</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apps -->
+            <div class="app-icon" onclick="openApp('FaceTime')">
+                <div class="app-icon-wrapper">📹</div>
+                <div class="app-name">FaceTime</div>
+            </div>
+            
+            <div class="app-icon" onclick="openApp('Kalender')">
+                <div class="app-icon-wrapper app-calendar">📅</div>
+                <div class="app-name">Kalender</div>
+            </div>
+            
+            <div class="app-icon" onclick="openApp('Foto')">
+                <div class="app-icon-wrapper app-photos">🖼️</div>
+                <div class="app-name">Foto</div>
+            </div>
+            
+            <div class="app-icon" onclick="openApp('Kamera')">
+                <div class="app-icon-wrapper app-camera">📷</div>
+                <div class="app-name">Kamera</div>
+            </div>
+
+            <div class="app-icon" onclick="openApp('Mail')">
+                <div class="app-icon-wrapper app-mail">✉️</div>
+                <div class="app-name">Mail</div>
+            </div>
+            
+            <div class="app-icon" onclick="openApp('Jam')">
+                <div class="app-icon-wrapper" style="background: #000;">🕐</div>
+                <div class="app-name">Jam</div>
+            </div>
+            
+            <div class="app-icon" onclick="openApp('Peta')">
+                <div class="app-icon-wrapper app-maps">🗺️</div>
+                <div class="app-name">Peta</div>
+            </div>
+            
+            <div class="app-icon" onclick="openApp('Cuaca')">
+                <div class="app-icon-wrapper app-weather">🌤️</div>
+                <div class="app-name">Cuaca</div>
+            </div>
+
+            <div class="app-icon" onclick="openApp('Catatan')">
+                <div class="app-icon-wrapper app-notes">📝</div>
+                <div class="app-name">Catatan</div>
+            </div>
+            
+            <div class="app-icon" onclick="openApp('Pengingat')">
+                <div class="app-icon-wrapper app-reminders">✓</div>
+                <div class="app-name">Pengingat</div>
+            </div>
+            
+            <div class="app-icon" onclick="openApp('App Store')">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #0a84ff 0%, #0066cc 100%);">A</div>
+                <div class="app-name">App Store</div>
+            </div>
+            
+            <div class="app-icon" onclick="openApp('Pengaturan')">
+                <div class="app-icon-wrapper app-settings">⚙️</div>
+                <div class="app-name">Pengaturan</div>
+            </div>
+        </div>
+
+        <!-- Page Indicators -->
+        <div class="page-indicators">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+        </div>
+
+        <!-- App Library Button -->
+        <div class="app-library-btn" onclick="toggleAppDrawer()">📱</div>
+
+        <!-- Dock -->
+        <div class="dock">
+            <div class="app-icon" onclick="openApp('Telepon')">
+                <div class="app-icon-wrapper app-phone">📞</div>
+            </div>
+            <div class="app-icon" onclick="openApp('Safari')">
+                <div class="app-icon-wrapper app-safari">🧭</div>
+            </div>
+            <div class="app-icon" onclick="openApp('Pesan')">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #34c759 0%, #30d158 100%);">💬</div>
+            </div>
+            <div class="app-icon" onclick="openApp('Musik')">
+                <div class="app-icon-wrapper app-music">🎵</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Control Center -->
+    <div class="control-center" id="controlCenter">
+        <div class="cc-grid">
+            <div class="cc-module">
+                <div class="cc-icon active" onclick="toggleWifi(this)">📶</div>
+                <div>Wi-Fi</div>
+            </div>
+            <div class="cc-module">
+                <div class="cc-icon active" onclick="toggleBluetooth(this)">🔵</div>
+                <div>Bluetooth</div>
+            </div>
+            <div class="cc-module">
+                <div class="cc-icon" onclick="toggleAirplane(this)">✈️</div>
+                <div>Pesawat</div>
+            </div>
+            <div class="cc-module">
+                <div class="cc-icon" onclick="toggleRotation(this)">🔒</div>
+                <div>Putar</div>
+            </div>
+        </div>
+        
+        <div class="cc-slider">🔆</div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+            <div class="cc-module large" style="display: flex; align-items: center; justify-content: center; font-size: 48px;">
+                🎵
+            </div>
+            <div class="cc-module large" style="display: flex; align-items: center; justify-content: center; font-size: 48px;">
+                🔦
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center; color: rgba(255,255,255,0.5); font-size: 12px;">
+            Geser ke kanan untuk menutup
+        </div>
+    </div>
+
+    <!-- App Drawer -->
+    <div class="app-drawer" id="appDrawer">
+        <div class="drawer-handle" onclick="toggleAppDrawer()"></div>
+        <div class="drawer-search">
+            <span>🔍</span>
+            <span>Cari Aplikasi</span>
+        </div>
+        <div class="drawer-grid">
+            <div class="drawer-folder">
+                <div class="folder-mini app-phone"></div>
+                <div class="folder-mini app-mail"></div>
+                <div class="folder-mini app-safari"></div>
+                <div class="folder-mini app-music"></div>
+            </div>
+            <div class="drawer-folder">
+                <div class="folder-mini" style="background: #ff9500;"></div>
+                <div class="folder-mini" style="background: #5856d6;"></div>
+                <div class="folder-mini" style="background: #ff2d55;"></div>
+                <div class="folder-mini" style="background: #5ac8fa;"></div>
+            </div>
+            <div class="drawer-folder">
+                <div class="folder-mini" style="background: #34c759;"></div>
+                <div class="folder-mini" style="background: #007aff;"></div>
+                <div class="folder-mini" style="background: #ffcc00;"></div>
+                <div class="folder-mini" style="background: #af52de;"></div>
+            </div>
+            <div class="drawer-folder">
+                <div class="folder-mini" style="background: #ff3b30;"></div>
+                <div class="folder-mini" style="background: #4cd964;"></div>
+                <div class="folder-mini" style="background: #132137;"></div>
+                <div class="folder-mini" style="background: #8e8e93;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="settings-modal" id="settingsModal">
+        <div class="settings-header">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <span onclick="closeSettings()" style="color: #007aff; cursor: pointer;">← Kembali</span>
+            </div>
+            <div class="settings-title">Pengaturan</div>
+        </div>
+        
+        <div class="settings-section">
+            <div class="settings-item" onclick="changeWallpaper()">
+                <span>🎨 Wallpaper</span>
+                <span>›</span>
+            </div>
+            
+            <div class="wallpaper-options" id="wallpaperOptions" style="display: none;">
+                <div class="wallpaper-option wallpaper-1 active" onclick="setWallpaper(1)"></div>
+                <div class="wallpaper-option wallpaper-2" onclick="setWallpaper(2)"></div>
+                <div class="wallpaper-option wallpaper-3" onclick="setWallpaper(3)"></div>
+                <div class="wallpaper-option wallpaper-4" onclick="setWallpaper(4)"></div>
+                <div class="wallpaper-option wallpaper-5" onclick="setWallpaper(5)"></div>
+            </div>
+
+            <div class="settings-item" onclick="toggleDarkMode()">
+                <span>🌙 Mode Gelap</span>
+                <span id="darkModeStatus">Mati</span>
+            </div>
+
+            <div class="settings-item">
+                <span>📳 Getar</span>
+                <span>Hidup</span>
+            </div>
+
+            <div class="settings-item">
+                <span>🔔 Notifikasi</span>
+                <span>›</span>
+            </div>
+
+            <div class="settings-item">
+                <span>🔒 Privasi</span>
+                <span>›</span>
+            </div>
+
+            <div class="settings-item" style="color: #ff3b30;" onclick="lockPhone()">
+                <span>Kunci Layar</span>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.5); font-size: 12px;">
+            iPhone 17 Pro Theme v1.0<br>
+            Dibuat untuk Android
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notif-icon">📱</div>
+        <div class="notif-content">
+            <h4 id="notifTitle">Judul</h4>
+            <p id="notifText">Isi notifikasi</p>
+        </div>
+    </div>
+
+    <script>
+        // Boot sequence
+        setTimeout(() => {
+            document.getElementById('bootScreen').classList.add('hidden');
+        }, 2000);
+
+        // Time updates
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            
+            document.getElementById('lockTime').textContent = `${hours}:${minutes}`;
+            document.getElementById('lockDate').textContent = `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Battery simulation
+        let batteryLevel = 80;
+        function updateBattery() {
+            document.getElementById('batteryPercent').textContent = batteryLevel + '%';
+            document.getElementById('batteryLevel').style.width = batteryLevel + '%';
+            
+            if (batteryLevel <= 20) {
+                document.getElementById('batteryLevel').style.background = '#ff3b30';
+            } else {
+                document.getElementById('batteryLevel').style.background = 'currentColor';
+            }
+        }
+        
+        // Simulate battery drain
+        setInterval(() => {
+            if (batteryLevel > 0) {
+                batteryLevel -= 1;
+                updateBattery();
+            }
+        }, 60000); // Every minute
+        updateBattery();
+
+        // Unlock phone
+        function unlockPhone() {
+            document.getElementById('lockScreen').classList.add('hidden');
+            hapticFeedback();
+        }
+
+        // Lock phone
+        function lockPhone() {
+            document.getElementById('lockScreen').classList.remove('hidden');
+            closeSettings();
+            closeAppDrawer();
+            hapticFeedback();
+        }
+
+        // Dynamic Island
+        let islandExpanded = false;
+        function toggleIsland() {
+            const island = document.getElementById('dynamicIsland');
+            islandExpanded = !islandExpanded;
+            if (islandExpanded) {
+                island.classList.add('expanded');
+            } else {
+                island.classList.remove('expanded');
+            }
+            hapticFeedback();
+        }
+
+        // Control Center
+        let controlCenterOpen = false;
+        document.addEventListener('touchstart', handleTouchStart, false);
+        document.addEventListener('touchmove', handleTouchMove, false);
+        
+        let xDown = null;
+        let yDown = null;
+
+        function handleTouchStart(evt) {
+            xDown = evt.touches[0].clientX;
+            yDown = evt.touches[0].clientY;
+        }
+
+        function handleTouchMove(evt) {
+            if (!xDown || !yDown) return;
+
+            let xUp = evt.touches[0].clientX;
+            let yUp = evt.touches[0].clientY;
+            let xDiff = xDown - xUp;
+            let yDiff = yDown - yUp;
+
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                if (xDiff > 0 && xDown > window.innerWidth - 50) {
+                    // Swipe left from right edge - open control center
+                    openControlCenter();
+                } else if (xDiff < 0 && xDown < 50 && controlCenterOpen) {
+                    // Swipe right from left edge - close control center
+                    closeControlCenter();
+                }
+            }
+            
+            xDown = null;
+            yDown = null;
+        }
+
+        function openControlCenter() {
+            document.getElementById('controlCenter').classList.add('active');
+            controlCenterOpen = true;
+            hapticFeedback();
+        }
+
+        function closeControlCenter() {
+            document.getElementById('controlCenter').classList.remove('active');
+            controlCenterOpen = false;
+        }
+
+        // Control Center toggles
+        function toggleWifi(el) {
+            el.classList.toggle('active');
+            showNotification('Wi-Fi', el.classList.contains('active') ? 'Wi-Fi menyala' : 'Wi-Fi mati');
+            hapticFeedback();
+        }
+
+        function toggleBluetooth(el) {
+            el.classList.toggle('active');
+            showNotification('Bluetooth', el.classList.contains('active') ? 'Bluetooth menyala' : 'Bluetooth mati');
+            hapticFeedback();
+        }
+
+        function toggleAirplane(el) {
+            el.classList.toggle('active');
+            hapticFeedback();
+        }
+
+        function toggleRotation(el) {
+            el.classList.toggle('active');
+            hapticFeedback();
+        }
+
+        // App Drawer
+        function toggleAppDrawer() {
+            document.getElementById('appDrawer').classList.toggle('active');
+            hapticFeedback();
+        }
+
+        function closeAppDrawer() {
+            document.getElementById('appDrawer').classList.remove('active');
+        }
+
+        // Open App
+        function openApp(appName) {
+            showNotification(appName, `Membuka ${appName}...`);
+            hapticFeedback();
+            
+            if (appName === 'Pengaturan') {
+                setTimeout(() => {
+                    document.getElementById('settingsModal').classList.add('active');
+                }, 300);
+            }
+        }
+
+        // Settings
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('active');
+        }
+
+        function changeWallpaper() {
+            const options = document.getElementById('wallpaperOptions');
+            options.style.display = options.style.display === 'none' ? 'grid' : 'none';
+        }
+
+        function setWallpaper(num) {
+            // Remove active class from all
+            document.querySelectorAll('.wallpaper-option').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Apply wallpaper
+            const newWallpaper = `wallpaper-${num}`;
+            document.getElementById('homeScreen').className = `home-screen ${newWallpaper}`;
+            document.getElementById('lockScreen').className = `lock-screen ${newWallpaper}`;
+            
+            showNotification('Wallpaper', 'Wallpaper berhasil diubah');
+            hapticFeedback();
+        }
+
+        let darkMode = false;
+        function toggleDarkMode() {
+            darkMode = !darkMode;
+            document.getElementById('darkModeStatus').textContent = darkMode ? 'Hidup' : 'Mati';
+            document.body.style.filter = darkMode ? 'invert(1)' : 'none';
+            hapticFeedback();
+        }
+
+        // Notification
+        function showNotification(title, text) {
+            const notif = document.getElementById('notification');
+            document.getElementById('notifTitle').textContent = title;
+            document.getElementById('notifText').textContent = text;
+            notif.classList.add('show');
+            
+            setTimeout(() => {
+                notif.classList.remove('show');
+            }, 3000);
+        }
+
+        // Haptic feedback simulation
+        function hapticFeedback() {
+            if (navigator.vibrate) {
+                navigator.vibrate(10);
+            }
+        }
+
+        // Flashlight
+        let flashlightOn = false;
+        function toggleFlashlight() {
+            flashlightOn = !flashlightOn;
+            if (flashlightOn) {
+                document.body.style.background = '#fff';
+                setTimeout(() => {
+                    document.body.style.background = '#000';
+                }, 100);
+            }
+            hapticFeedback();
+        }
+
+        function openCamera() {
+            showNotification('Kamera', 'Membuka kamera...');
+            hapticFeedback();
+        }
+
+        // Double tap to lock
+        let lastTap = 0;
+        document.addEventListener('touchend', function(e) {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 300 && tapLength > 0) {
+                lockPhone();
+            }
+            lastTap = currentTime;
+        });
+
+        // Prevent context menu
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        
+        // Prevent pull-to-refresh
+        document.body.style.overscrollBehavior = 'none';
+    </script>
+</body>
+</html>
