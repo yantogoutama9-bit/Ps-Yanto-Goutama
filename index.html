@@ -1,35 +1,29 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ps. Yanto Goutama | Spiritual Mentor & Leadership Coach</title>
+    <title>Ps. Yanto Goutama | Spiritual Mentor & Teolog</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --cream: #faf9f6;
-            --warm-gray: #8b8680;
-            --charcoal: #2c2c2c;
-            --soft-brown: #a67c52;
-            --light-taupe: #d4cfc7;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --color-primary: #0a0a0f;
+            --color-secondary: #12121a;
+            --color-accent: #1a1a2e;
+            --color-gold: #d4af37;
+            --color-gold-light: #f4e5c2;
+            --color-text: #e2e8f0;
+            --color-muted: #94a3b8;
         }
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--cream);
-            color: var(--charcoal);
-            line-height: 1.6;
+            background-color: var(--color-primary);
+            color: var(--color-text);
             overflow-x: hidden;
         }
         
@@ -37,70 +31,166 @@
             font-family: 'Cormorant Garamond', serif;
         }
         
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Custom cursor */
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--soft-brown);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s;
-        }
-        
-        .cursor-outline {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--soft-brown);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.15s, opacity 0.15s;
-        }
-        
-        /* Navigation */
-        .nav-fixed {
+        /* Animated Background */
+        .bg-animated {
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(26, 26, 46, 0.8) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(18, 18, 26, 1) 0%, var(--color-primary) 100%);
             position: fixed;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            animation: pulse 15s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        /* Noise Texture Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(18, 18, 26, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .glass-strong {
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(135deg, #f4e5c2 0%, #d4af37 50%, #b8941f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .text-gradient-soft {
+            background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Hover Effects */
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--color-primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--color-gold), #b8941f);
+            border-radius: 4px;
+        }
+        
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            border-color: rgba(212, 175, 55, 0.8);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        /* Card Styles */
+        .card-luxury {
+            background: linear-gradient(145deg, rgba(18, 18, 26, 0.9) 0%, rgba(26, 26, 46, 0.6) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             right: 0;
-            z-index: 100;
-            padding: 2rem 4rem;
-            transition: all 0.4s ease;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
         }
         
-        .nav-scrolled {
-            background: rgba(250, 249, 246, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 4rem;
-            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-        }
-        
+        /* Navigation Link Effect */
         .nav-link {
             position: relative;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--charcoal);
-            text-decoration: none;
-            transition: color 0.3s;
+            padding: 0.5rem 0;
         }
         
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 1px;
-            background: var(--soft-brown);
+            background: linear-gradient(90deg, var(--color-gold), transparent);
             transition: width 0.3s ease;
         }
         
@@ -108,814 +198,875 @@
             width: 100%;
         }
         
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 0 4rem;
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            margin: 5rem 0;
         }
         
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-        }
-        
-        .hero-subtitle {
-            font-size: 0.7rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--warm-gray);
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        
-        .hero-title em {
-            font-style: italic;
-            color: var(--soft-brown);
-        }
-        
-        .hero-desc {
-            font-size: 1.1rem;
-            color: var(--warm-gray);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            font-weight: 300;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        /* Buttons */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            background: var(--charcoal);
-            color: var(--cream);
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-primary:hover {
-            background: var(--soft-brown);
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            border: 1px solid var(--charcoal);
-            color: var(--charcoal);
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.4s ease;
-        }
-        
-        .btn-outline:hover {
-            background: var(--charcoal);
-            color: var(--cream);
-        }
-        
-        /* Section Styling */
-        .section {
-            padding: 8rem 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-        
-        .section-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--soft-brown);
-            margin-bottom: 1rem;
-        }
-        
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 300;
-            line-height: 1.2;
-        }
-        
-        /* Grid Layout */
-        .grid-masonry {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .grid-item {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .grid-item:nth-child(2) {
-            margin-top: 4rem;
-        }
-        
-        .grid-item:nth-child(3) {
-            margin-top: 2rem;
-        }
-        
-        .grid-item-image {
-            width: 100%;
-            aspect-ratio: 3/4;
-            background: linear-gradient(135deg, #e8e4df 0%, #d4cfc7 100%);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.6s ease;
-        }
-        
-        .grid-item:hover .grid-item-image {
-            transform: scale(1.05);
-        }
-        
-        .grid-item-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2rem;
-        }
-        
-        .grid-item:hover .grid-item-overlay {
-            opacity: 1;
-        }
-        
-        .grid-item-number {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            color: var(--warm-gray);
-        }
-        
-        .grid-item-content {
-            padding: 1.5rem 0;
-        }
-        
-        .grid-item-category {
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--soft-brown);
-            margin-bottom: 0.5rem;
-        }
-        
-        .grid-item-title {
-            font-size: 1.5rem;
-            font-weight: 400;
-            line-height: 1.3;
-        }
-        
-        /* Quote Section */
-        .quote-section {
-            background: var(--charcoal);
-            color: var(--cream);
-            padding: 10rem 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .quote-section::before {
-            content: '"';
-            position: absolute;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 20rem;
-            opacity: 0.05;
+        /* Quote Styling */
+        .quote-mark {
+            font-size: 6rem;
             line-height: 1;
+            color: rgba(212, 175, 55, 0.2);
+            font-family: 'Cormorant Garamond', serif;
         }
         
-        .quote-text {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-weight: 300;
-            line-height: 1.4;
-            max-width: 900px;
-            margin: 0 auto 2rem;
-            font-style: italic;
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
         }
         
-        .quote-author {
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            opacity: 0.6;
+        .mobile-menu.open {
+            transform: translateX(0);
         }
         
-        /* Contact Section */
-        .contact-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        /* Accordion for Theology Content */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
         }
         
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
+        .accordion-content.active {
+            max-height: 2000px;
         }
         
-        .contact-info p {
-            color: var(--warm-gray);
-            margin-bottom: 2rem;
-            line-height: 1.8;
+        /* Custom List Styling */
+        .elegant-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
         }
         
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .contact-detail span {
-            color: var(--warm-gray);
-        }
-        
-        .whatsapp-card {
-            background: white;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-        
-        .whatsapp-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 2rem;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        
-        /* Footer */
-        footer {
-            padding: 4rem;
-            border-top: 1px solid var(--light-taupe);
-            text-align: center;
-        }
-        
-        .footer-logo {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-text {
-            font-size: 0.75rem;
-            color: var(--warm-gray);
-            letter-spacing: 0.1em;
-        }
-        
-        /* Responsive */
-        @media (max-width: 968px) {
-            .grid-masonry {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .grid-item:nth-child(2),
-            .grid-item:nth-child(3) {
-                margin-top: 0;
-            }
-            
-            .contact-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-fixed {
-                padding: 1.5rem 2rem;
-            }
-            
-            .section {
-                padding: 5rem 2rem;
-            }
-            
-            .hero {
-                padding: 0 2rem;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            .grid-masonry {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .elegant-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+            font-size: 0.5rem;
+            top: 0.5rem;
         }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <!-- Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <!-- Background Elements -->
+    <div class="bg-animated"></div>
+    <div class="noise-overlay"></div>
 
     <!-- Navigation -->
-    <nav class="nav-fixed" id="navbar">
-        <div class="flex justify-between items-center">
-            <a href="#" class="font-serif text-2xl tracking-tight">YG.</a>
-            
-            <div class="hidden md:flex items-center gap-12">
-                <a href="#about" class="nav-link">Tentang</a>
-                <a href="#collections" class="nav-link">Koleksi</a>
-                <a href="#contact" class="nav-link">Kontak</a>
-                <a href="https://wa.me/6281225047599" target="_blank" class="btn-primary text-xs">Booking Sesi</a>
+    <nav class="fixed w-full z-50 glass-strong transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full border border-yellow-600/30 flex items-center justify-center bg-gradient-to-br from-yellow-900/20 to-transparent">
+                        <span class="font-serif text-xl text-yellow-500">YG</span>
+                    </div>
+                    <div class="hidden md:block">
+                        <h1 class="font-serif text-xl text-gradient font-semibold tracking-wide">Ps. Yanto Goutama</h1>
+                        <p class="text-xs text-gray-400 tracking-widest uppercase">Spiritual Mentor & Teolog</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#beranda" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Beranda</a>
+                    <a href="#tentang" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Tentang</a>
+                    <a href="#teologia" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Teologia Gratis</a>
+                    <a href="#koleksi" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Koleksi</a>
+                    <a href="#mentoring" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Mentoring</a>
+                    <a href="#kontak" class="btn-primary px-6 py-2 rounded-full text-sm uppercase tracking-wider text-yellow-500">Kontak</a>
+                </div>
+
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
             </div>
-            
-            <button class="md:hidden" id="mobileMenuBtn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <p class="hero-subtitle">Spiritual Mentor & Leadership Coach</p>
-            <h1 class="hero-title font-serif">
-                Membangun <em>Pemimpin</em> Berkarakter untuk Generasi Mendatang
-            </h1>
-            <p class="hero-desc">
-                20+ tahun membantu pemimpin gereja, entrepreneur, dan professional menemukan tujuan hidup melalui pendekatan spiritual yang mendalam.
-            </p>
-            <div class="flex gap-4 justify-center flex-wrap">
-                <a href="https://wa.me/6281225047599" target="_blank" class="btn-primary">
-                    Jadwalkan Mentoring
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-                <a href="#collections" class="btn-outline">Lihat Koleksi</a>
-            </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed inset-y-0 right-0 w-80 bg-black/95 backdrop-blur-xl z-50 p-8 border-l border-yellow-900/30 md:hidden" id="mobileMenu">
+        <button class="absolute top-6 right-6 text-white" onclick="toggleMobileMenu()">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <div class="mt-12 flex flex-col space-y-6">
+            <a href="#beranda" onclick="toggleMobileMenu()" class="text-lg font-serif text-gray-300 hover:text-yellow-500 transition-colors">Beranda</a>
+            <a href="#tentang" onclick="toggleMobileMenu()" class="text-lg font-serif text-gray-300 hover:text-yellow-500 transition-colors">Tentang</a>
+            <a href="#teologia" onclick="toggleMobileMenu()" class="text-lg font-serif text-gray-300 hover:text-yellow-500 transition-colors">Teologia Gratis</a>
+            <a href="#koleksi" onclick="toggleMobileMenu()" class="text-lg font-serif text-gray-300 hover:text-yellow-500 transition-colors">Koleksi</a>
+            <a href="#mentoring" onclick="toggleMobileMenu()" class="text-lg font-serif text-gray-300 hover:text-yellow-500 transition-colors">Mentoring</a>
+            <a href="#kontak" onclick="toggleMobileMenu()" class="text-lg font-serif text-yellow-500">Kontak</a>
         </div>
-    </section>
+    </div>
 
-    <!-- Collections / Ice Breakers -->
-    <section class="section" id="collections">
-        <div class="section-header reveal">
-            <p class="section-label">Koleksi</p>
-            <h2 class="section-title font-serif">Ice Breaker Cards</h2>
+    <!-- Hero Section -->
+    <section id="beranda" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-900/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
-        
-        <div class="grid-masonry">
-            <!-- Card 1 -->
-            <div class="grid-item reveal" onclick="openModal(0)">
-                <div class="grid-item-image">
-                    <div class="grid-item-number">01</div>
-                    <div class="grid-item-overlay">
-                        <p class="text-white text-sm">Klik untuk detail</p>
-                    </div>
-                </div>
-                <div class="grid-item-content">
-                    <p class="grid-item-category">Purpose</p>
-                    <h3 class="grid-item-title font-serif">Definisi Sukses</h3>
-                </div>
-            </div>
-            
-            <!-- Card 2 -->
-            <div class="grid-item reveal" onclick="openModal(1)">
-                <div class="grid-item-image" style="background: linear-gradient(135deg, #d4cfc7 0%, #c4bdb3 100%);">
-                    <div class="grid-item-number">02</div>
-                    <div class="grid-item-overlay">
-                        <p class="text-white text-sm">Klik untuk detail</p>
-                    </div>
-                </div>
-                <div class="grid-item-content">
-                    <p class="grid-item-category">Legacy</p>
-                    <h3 class="grid-item-title font-serif">Legacy Check</h3>
-                </div>
-            </div>
-            
-            <!-- Card 3 -->
-            <div class="grid-item reveal" onclick="openModal(2)">
-                <div class="grid-item-image" style="background: linear-gradient(135deg, #c4bdb3 0%, #b5ada1 100%);">
-                    <div class="grid-item-number">03</div>
-                    <div class="grid-item-overlay">
-                        <p class="text-white text-sm">Klik untuk detail</p>
-                    </div>
-                </div>
-                <div class="grid-item-content">
-                    <p class="grid-item-category">Courage</p>
-                    <h3 class="grid-item-title font-serif">Fear Factor</h3>
-                </div>
-            </div>
-            
-            <!-- Card 4 -->
-            <div class="grid-item reveal" onclick="openModal(3)">
-                <div class="grid-item-image" style="background: linear-gradient(135deg, #e8e4df 0%, #d4cfc7 100%);">
-                    <div class="grid-item-number">04</div>
-                    <div class="grid-item-overlay">
-                        <p class="text-white text-sm">Klik untuk detail</p>
-                    </div>
-                </div>
-                <div class="grid-item-content">
-                    <p class="grid-item-category">Spiritual Growth</p>
-                    <h3 class="grid-item-title font-serif">Faith Metric</h3>
-                </div>
-            </div>
-            
-            <!-- Card 5 -->
-            <div class="grid-item reveal" onclick="openModal(4)">
-                <div class="grid-item-image" style="background: linear-gradient(135deg, #d4cfc7 0%, #c4bdb3 100%);">
-                    <div class="grid-item-number">05</div>
-                    <div class="grid-item-overlay">
-                        <p class="text-white text-sm">Klik untuk detail</p>
-                    </div>
-                </div>
-                <div class="grid-item-content">
-                    <p class="grid-item-category">Wisdom</p>
-                    <h3 class="grid-item-title font-serif">Decision Point</h3>
-                </div>
-            </div>
-            
-            <!-- Card 6 -->
-            <div class="grid-item reveal" onclick="openModal(5)">
-                <div class="grid-item-image" style="background: linear-gradient(135deg, #c4bdb3 0%, #b5ada1 100%);">
-                    <div class="grid-item-number">06</div>
-                    <div class="grid-item-overlay">
-                        <p class="text-white text-sm">Klik untuk detail</p>
-                    </div>
-                </div>
-                <div class="grid-item-content">
-                    <p class="grid-item-category">Rest</p>
-                    <h3 class="grid-item-title font-serif">Sabbath Moment</h3>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Quote -->
-    <section class="quote-section">
-        <p class="quote-text font-serif reveal">
-            "Kepemimpinan yang sejati bukan tentang seberapa tinggi Anda berdiri, tetapi seberapa rendah Anda melayani dengan hati yang tulus."
-        </p>
-        <p class="quote-author reveal">— Ps. Yanto Goutama</p>
-    </section>
-
-    <!-- Contact -->
-    <section class="section" id="contact">
-        <div class="contact-section">
-            <div class="contact-info reveal">
-                <p class="section-label">Kontak</p>
-                <h3 class="font-serif">Mari Berkolaborasi</h3>
-                <p>
-                    Tersedia untuk personal mentoring, corporate training, dan retreat rohani. 
-                    Booking minimal 2 minggu sebelumnya untuk persiapan yang optimal.
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="reveal active">
+                <p class="text-yellow-500/80 text-sm uppercase tracking-[0.3em] mb-4">Spiritual Mentor & Leadership Coach</p>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-light mb-6 leading-tight">
+                    <span class="text-gradient block mb-2">Membangun</span>
+                    <span class="text-white italic">Pemimpin Berkarakter</span>
+                    <span class="text-gradient block mt-2">untuk Generasi Mendatang</span>
+                </h1>
+                <p class="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl leading-relaxed mb-10 font-light">
+                    20+ tahun membantu pemimpin gereja, entrepreneur, dan professional menemukan tujuan hidup melalui pendekatan spiritual yang mendalam dan teologia yang transformasional.
                 </p>
-                
-                <div class="contact-detail">
-                    <span>Senin — Jumat</span>
-                    <span>08:00 — 17:00 WIB</span>
-                </div>
-                <div class="contact-detail">
-                    <span>Lokasi</span>
-                    <span>Online / On-site (Surakarta)</span>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#teologia" class="btn-primary px-8 py-4 rounded-full text-yellow-500 border border-yellow-600/30 hover:border-yellow-500 transition-all flex items-center gap-2 group">
+                        <span>Jelajahi Teologia</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#mentoring" class="px-8 py-4 rounded-full text-white border border-white/20 hover:border-white/50 hover:bg-white/5 transition-all">
+                        Mulai Mentoring
+                    </a>
                 </div>
             </div>
             
-            <div class="whatsapp-card reveal">
-                <div class="whatsapp-icon">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto reveal">
+                <div class="glass p-6 rounded-2xl hover-lift">
+                    <i data-lucide="book-open" class="w-8 h-8 text-yellow-500/80 mx-auto mb-3"></i>
+                    <h3 class="font-serif text-xl mb-2">Homeletika</h3>
+                    <p class="text-sm text-gray-400">Seni berkhotbah yang mengubahkan hati</p>
                 </div>
-                <h4 class="font-serif text-2xl mb-2">Booking via WhatsApp</h4>
-                <p class="text-gray-500 mb-6 text-sm">Respons lebih cepat untuk jadwal mentoring</p>
-                <a href="https://wa.me/6281225047599" target="_blank" class="btn-primary w-full justify-center">
-                    Chat Sekarang
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-                <p class="mt-4 text-xs text-gray-400">+62 812-2504-7599</p>
+                <div class="glass p-6 rounded-2xl hover-lift">
+                    <i data-lucide="search" class="w-8 h-8 text-yellow-500/80 mx-auto mb-3"></i>
+                    <h3 class="font-serif text-xl mb-2">Hermeneutika</h3>
+                    <p class="text-sm text-gray-400">Metode penafsiran Alkitab yang valid</p>
+                </div>
+                <div class="glass p-6 rounded-2xl hover-lift">
+                    <i data-lucide="music" class="w-8 h-8 text-yellow-500/80 mx-auto mb-3"></i>
+                    <h3 class="font-serif text-xl mb-2">Pujian</h3>
+                    <p class="text-sm text-gray-400">Teologia penyembahan yang mendalam</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-yellow-500/50"></i>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- Quote Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <div class="quote-mark">"</div>
+            <blockquote class="font-serif text-2xl md:text-4xl italic text-gray-300 leading-relaxed -mt-8 mb-6">
+                Kepemimpinan yang sejati bukan tentang seberapa tinggi Anda berdiri, tetapi seberapa rendah Anda melayani dengan hati yang tulus.
+            </blockquote>
+            <cite class="text-yellow-500/80 text-sm uppercase tracking-widest not-italic">— Ps. Yanto Goutama</cite>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- About Section -->
+    <section id="tentang" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-yellow-900/20 to-blue-900/20 rounded-3xl blur-2xl"></div>
+                        <div class="relative glass p-8 rounded-3xl border border-yellow-900/20">
+                            <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                                <div class="text-center p-8">
+                                    <div class="w-32 h-32 mx-auto rounded-full border-2 border-yellow-600/30 flex items-center justify-center mb-4 bg-gradient-to-br from-yellow-900/20 to-transparent">
+                                        <span class="font-serif text-5xl text-yellow-500">YG</span>
+                                    </div>
+                                    <p class="font-serif text-2xl text-gradient">Ps. Yanto Goutama</p>
+                                    <p class="text-gray-500 mt-2">Spiritual Mentor & Teolog</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal space-y-6">
+                    <p class="text-yellow-500/80 text-sm uppercase tracking-widest">Tentang Saya</p>
+                    <h2 class="font-serif text-4xl md:text-5xl text-gradient">Misi untuk Menguduskan Pemimpin</h2>
+                    <div class="space-y-4 text-gray-400 leading-relaxed">
+                        <p>
+                            Dengan pengalaman lebih dari dua dekade dalam pelayanan dan pembinaan karakter, saya memiliki passion untuk melihat pemimpin-pemimpin rohani yang tidak hanya cakap secara teknis, tetapi juga dalam dalam persekutuan dengan Tuhan.
+                        </p>
+                        <p>
+                            Pendekatan saya menggabungkan <strong class="text-white">teologia reformasi yang solid</strong> dengan <strong class="text-white">aplikasi praktis</strong> yang dapat langsung diimplementasikan dalam konteks lokal. Bukan untuk tampil, melainkan untuk menyentuh hadirat Tuhan dan membawa transformasi nyata.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-6 pt-6">
+                        <div class="border-l-2 border-yellow-600/30 pl-4">
+                            <p class="font-serif text-3xl text-gradient">20+</p>
+                            <p class="text-sm text-gray-500">Tahun Pengalaman</p>
+                        </div>
+                        <div class="border-l-2 border-yellow-600/30 pl-4">
+                            <p class="font-serif text-3xl text-gradient">500+</p>
+                            <p class="text-sm text-gray-500">Pemimpin Dimentori</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teologia Gratis Section -->
+    <section id="teologia" class="py-24 px-4 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-yellow-500/80 text-sm uppercase tracking-widest mb-4">Teologia Gratis</p>
+                <h2 class="font-serif text-4xl md:text-6xl text-gradient mb-6">Dari Teknik ke Transformasi</h2>
+                <p class="max-w-3xl mx-auto text-gray-400 text-lg">
+                    Belajar berkhotbah dengan hati yang diubahkan oleh Firman, menafsir Alkitab dengan metode yang valid, dan memimpin pujian sebagai imam yang mempersembahkan persembahan roh.
+                </p>
+            </div>
+
+            <!-- Homeletika -->
+            <div class="mb-12 reveal">
+                <div class="card-luxury rounded-3xl p-8 md:p-12 cursor-pointer" onclick="toggleAccordion('homeletika')">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-900/20 flex items-center justify-center border border-yellow-600/30">
+                                <i data-lucide="mic" class="w-6 h-6 text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-3xl text-white">Homeletika</h3>
+                                <p class="text-gray-400 text-sm mt-1">Seni Berkhotbah yang Mengubahkan</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-down" class="w-6 h-6 text-yellow-500 transform transition-transform" id="icon-homeletika"></i>
+                    </div>
+                    
+                    <div class="accordion-content" id="content-homeletika">
+                        <div class="prose prose-invert max-w-none text-gray-300 space-y-6 pt-6 border-t border-yellow-900/20">
+                            <p class="text-lg leading-relaxed">
+                                Homeletika sering dipahami secara reduksionis sebagai "teknik public speaking dengan label Kristen." Ini adalah tragedi yang merusak gereja. Homeletika yang sejati adalah <strong class="text-yellow-500">pertemuan antara teks kekal dan konteks kekinian</strong>, dipertemukan oleh penceramah yang telah diubahkan oleh teks tersebut.
+                            </p>
+                            
+                            <div class="grid md:grid-cols-2 gap-8 my-8">
+                                <div class="glass p-6 rounded-xl">
+                                    <h4 class="font-serif text-xl text-yellow-500 mb-3">Model Alkitabiah</h4>
+                                    <ul class="elegant-list text-sm space-y-2 text-gray-400">
+                                        <li>Nabi-nabi membawa <em>burden</em> dari Tuhan (Yeremia 20:9)</li>
+                                        <li>Rasul Paulus: <em>marturia</em> (kesaksian), bukan hanya instruksi</li>
+                                        <li>Yesus: Otoritas intrinsik dan penggunaan narasi</li>
+                                    </ul>
+                                </div>
+                                <div class="glass p-6 rounded-xl">
+                                    <h4 class="font-serif text-xl text-yellow-500 mb-3">5 Prinsip Utama</h4>
+                                    <ul class="elegant-list text-sm space-y-2 text-gray-400">
+                                        <li>Ekspositori (Text-Driven)</li>
+                                        <li>Kontekstual (Contextualization)</li>
+                                        <li>Kristosentris (Christ-Centered)</li>
+                                        <li>Aplikatif (Transformative)</li>
+                                        <li>Klimaks (Climactic Structure)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-r from-yellow-900/10 to-transparent p-6 rounded-xl border-l-4 border-yellow-600">
+                                <h4 class="font-serif text-xl mb-3">Tahapan Persiapan: Metode 5H</h4>
+                                <div class="grid md:grid-cols-5 gap-4 text-sm">
+                                    <div class="text-center">
+                                        <div class="w-10 h-10 rounded-full bg-yellow-900/30 flex items-center justify-center mx-auto mb-2 text-yellow-500 font-serif">1</div>
+                                        <p class="font-semibold text-white">Hermeneutika</p>
+                                        <p class="text-xs text-gray-500">Menemukan makna teks</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="w-10 h-10 rounded-full bg-yellow-900/30 flex items-center justify-center mx-auto mb-2 text-yellow-500 font-serif">2</div>
+                                        <p class="font-semibold text-white">Historika</p>
+                                        <p class="text-xs text-gray-500">Memahami latar belakang</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="w-10 h-10 rounded-full bg-yellow-900/30 flex items-center justify-center mx-auto mb-2 text-yellow-500 font-serif">3</div>
+                                        <p class="font-semibold text-white">Harmonia</p>
+                                        <p class="text-xs text-gray-500">Dalam kanon Alkitab</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="w-10 h-10 rounded-full bg-yellow-900/30 flex items-center justify-center mx-auto mb-2 text-yellow-500 font-serif">4</div>
+                                        <p class="font-semibold text-white">Homiletika</p>
+                                        <p class="text-xs text-gray-500">Merancang struktur</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="w-10 h-10 rounded-full bg-yellow-900/30 flex items-center justify-center mx-auto mb-2 text-yellow-500 font-serif">5</div>
+                                        <p class="font-semibold text-white">Hidup</p>
+                                        <p class="text-xs text-gray-500">Aplikasi transformatif</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hermeneutika -->
+            <div class="mb-12 reveal">
+                <div class="card-luxury rounded-3xl p-8 md:p-12 cursor-pointer" onclick="toggleAccordion('hermeneutika')">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-900/20 flex items-center justify-center border border-yellow-600/30">
+                                <i data-lucide="book-text" class="w-6 h-6 text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-3xl text-white">Hermeneutika</h3>
+                                <p class="text-gray-400 text-sm mt-1">Ilmu Menafsir Firman Allah</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-down" class="w-6 h-6 text-yellow-500 transform transition-transform" id="icon-hermeneutika"></i>
+                    </div>
+                    
+                    <div class="accordion-content" id="content-hermeneutika">
+                        <div class="prose prose-invert max-w-none text-gray-300 space-y-6 pt-6 border-t border-yellow-900/20">
+                            <p class="text-lg leading-relaxed">
+                                Hermeneutika bukan sekadar teknik akademis. Ia adalah <strong class="text-yellow-500">disiplin rohani</strong> karena kita menafsirkan Firman Allah yang hidup dan berkuasa. Tujuannya bukan informasi, melainkan transformasi.
+                            </p>
+
+                            <div class="grid md:grid-cols-3 gap-6 my-8">
+                                <div class="glass p-6 rounded-xl text-center">
+                                    <i data-lucide="eye" class="w-8 h-8 text-yellow-500 mx-auto mb-3"></i>
+                                    <h4 class="font-serif text-lg mb-2">Observasi</h4>
+                                    <p class="text-sm text-gray-400">"Apa yang saya lihat?" — Mengumpulkan data tanpa menafsir dulu</p>
+                                </div>
+                                <div class="glass p-6 rounded-xl text-center">
+                                    <i data-lucide="brain" class="w-8 h-8 text-yellow-500 mx-auto mb-3"></i>
+                                    <h4 class="font-serif text-lg mb-2">Interpretasi</h4>
+                                    <p class="text-sm text-gray-400">"Apa artinya?" — Menemukan makna dalam konteks</p>
+                                </div>
+                                <div class="glass p-6 rounded-xl text-center">
+                                    <i data-lucide="activity" class="w-8 h-8 text-yellow-500 mx-auto mb-3"></i>
+                                    <h4 class="font-serif text-lg mb-2">Aplikasi</h4>
+                                    <p class="text-sm text-gray-400">"Bagaimana saya harus merespons?" — Transformasi hidup</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <h4 class="font-serif text-2xl text-yellow-500">Prinsip Penafsiran</h4>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="space-y-3">
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-yellow-500 mt-1">01</span>
+                                            <div>
+                                                <h5 class="text-white font-semibold">Interpretasi Literal</h5>
+                                                <p class="text-sm text-gray-400">Terima arti harfiah kecuali indikasi kuat untuk kiasan. Genre menentukan pendekatan.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-yellow-500 mt-1">02</span>
+                                            <div>
+                                                <h5 class="text-white font-semibold">Kontekstual</h5>
+                                                <p class="text-sm text-gray-400">Ayat tanpa konteks adalah preteks. Selalu tanyakan: siapa, kapan, di mana, mengapa?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-yellow-500 mt-1">03</span>
+                                            <div>
+                                                <h5 class="text-white font-semibold">Analogia Scriptura</h5>
+                                                <p class="text-sm text-gray-400">Alkitab menafsirkan Alkitab. Satu ayat tidak bertentangan dengan keseluruhan.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-yellow-500 mt-1">04</span>
+                                            <div>
+                                                <h5 class="text-white font-semibold">Kristosentris</h5>
+                                                <p class="text-sm text-gray-400">Seluruh Kitab Suci bersaksi tentang Kristus (Yohanes 5:39).</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pujian -->
+            <div class="mb-12 reveal">
+                <div class="card-luxury rounded-3xl p-8 md:p-12 cursor-pointer" onclick="toggleAccordion('pujian')">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-900/20 flex items-center justify-center border border-yellow-600/30">
+                                <i data-lucide="music-2" class="w-6 h-6 text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-3xl text-white">Pujian & Penyembahan</h3>
+                                <p class="text-gray-400 text-sm mt-1">Dari Tugas ke Panggilan Imam</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-down" class="w-6 h-6 text-yellow-500 transform transition-transform" id="icon-pujian"></i>
+                    </div>
+                    
+                    <div class="accordion-content" id="content-pujian">
+                        <div class="prose prose-invert max-w-none text-gray-300 space-y-6 pt-6 border-t border-yellow-900/20">
+                            <p class="text-lg leading-relaxed">
+                                Untuk memahami pujian dengan benar, kita harus kembali pada identitas fundamental kita di dalam Kristus. Bukan sebagai "pemusik gereja" atau "penyanyi rohani," melainkan sebagai <strong class="text-yellow-500">imam-imam yang mempersembahkan persembahan roh yang hidup</strong> (1 Petrus 2:5).
+                            </p>
+
+                            <div class="bg-gradient-to-br from-yellow-900/10 to-transparent p-8 rounded-2xl border border-yellow-900/20 my-8">
+                                <h4 class="font-serif text-2xl text-center mb-6">Paradigma yang Mengubahkan</h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm">
+                                        <thead>
+                                            <tr class="border-b border-yellow-900/30">
+                                                <th class="text-left py-3 text-yellow-500 font-serif text-lg">Paradigma "Pekerjaan"</th>
+                                                <th class="text-left py-3 text-yellow-500 font-serif text-lg">Paradigma "Imamat"</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-gray-400">
+                                            <tr class="border-b border-yellow-900/10">
+                                                <td class="py-3 pr-4">Tujuan: Menghasilkan musik yang bagus</td>
+                                                <td class="py-3">Tujuan: Mempersembahkan persembahan roh yang berkenan</td>
+                                            </tr>
+                                            <tr class="border-b border-yellow-900/10">
+                                                <td class="py-3 pr-4">Standar: Apresiasi jemaat</td>
+                                                <td class="py-3">Standar: Persetujuan ilahi</td>
+                                            </tr>
+                                            <tr class="border-b border-yellow-900/10">
+                                                <td class="py-3 pr-4">Fokus: Teknik, performa, estetika</td>
+                                                <td class="py-3">Fokus: Kesucian hati, ketaatan, kerendahan</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-3 pr-4">Hasil: Jemaat terhibur</td>
+                                                <td class="py-3">Hasil: Tuhan dilawati, jemaat diubahkan</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 class="font-serif text-xl text-yellow-500 mb-4">Mazmur 22:3 — Tuhan Bersemayam di Pujian</h4>
+                                    <p class="text-gray-400 mb-4">
+                                        "Tetapi Engkau kudus, yang bertakhta di atas pujian Israel."
+                                    </p>
+                                    <p class="text-sm text-gray-500">
+                                        Tuhan tidak hanya menerima pujian; Dia hadir di dalamnya. Pujian yang benar menciptakan atmosfer di mana hati terbuka untuk menerima firman.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="font-serif text-xl text-yellow-500 mb-4">Yohanes 4:23 — Dalam Roh dan Kebenaran</h4>
+                                    <p class="text-gray-400 mb-4">
+                                        "Penyembah-penyembah yang benar akan menyembah Bapa dalam roh dan kebenaran."
+                                    </p>
+                                    <ul class="elegant-list text-sm text-gray-500">
+                                        <li><strong>Dalam Roh:</strong> Kesadaran ketergantungan pada Roh Kudus</li>
+                                        <li><strong>Dalam Kebenaran:</strong> Integritas hidup yang selaras dengan Firman</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- Products Section -->
+<section id="koleksi" class="py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+            <p class="text-yellow-500/80 text-sm uppercase tracking-widest mb-4">Koleksi</p>
+            <h2 class="font-serif text-4xl md:text-5xl text-gradient mb-6">Sumber Daya Spiritual</h2>
+            <p class="max-w-2xl mx-auto text-gray-400">Alat praktis untuk memperdalam persekutuan dengan Tuhan, membangun komunitas yang autentik, dan menopang pertumbuhan karakter rohani.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <!-- Ice Breaker Cards -->
+            <div class="card-luxury rounded-3xl p-8 hover-lift reveal group">
+                <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-900/20 to-indigo-900/20 mb-6 flex items-center justify-center border border-white/5 group-hover:border-blue-500/30 transition-colors relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%234f46e5\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+                    <div class="text-center p-8 relative z-10">
+                        <i data-lucide="messages-square" class="w-16 h-16 text-blue-400/60 mx-auto mb-4"></i>
+                        <p class="font-serif text-2xl text-blue-200/80">Ice Breaker Cards</p>
+                        <p class="text-sm text-blue-300/50 mt-2">52 Kartu Pertanyaan Mendalam</p>
+                    </div>
+                </div>
+                
+                <h3 class="font-serif text-2xl mb-4 text-white">Ice Breaker Cards</h3>
+                
+                <div class="space-y-4 text-gray-400 mb-6">
+                    <p class="leading-relaxed">
+                        Set kartu yang dirancang untuk menciptakan ruang aman bagi individu untuk berbagi perjalanan iman, keraguan, dan pengalaman rohani secara autentik.
+                    </p>
+                    
+                    <div class="border-t border-white/10 pt-4 mt-4">
+                        <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-3">Isi Kartu:</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0"></i>
+                                <span><strong class="text-gray-300">Level 1 - Refleksi Pribadi:</strong> Pertanyaan tentang definisi sukses, ketakutan terbesar, momen grace yang tak terlupakan, dan nilai-nilai fundamental.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0"></i>
+                                <span><strong class="text-gray-300">Level 2 - Kedalaman Rohani:</strong> Eksplorasi hubungan dengan Tuhan, cara mendengar suara-Nya, pengalaman doa yang mengubahkan, dan zona nyaman iman.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0"></i>
+                                <span><strong class="text-gray-300">Level 3 - Vulnerabilitas:</strong> Pertanyaan tentang kegagalan, penerimaan diri, pengampunan, dan area hidup yang masih dalam proses penyembuhan.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0"></i>
+                                <span><strong class="text-gray-300">Level 4 - Panggilan:</strong> Diskusi tentang legasi hidup, penggunaan talenta untuk kemuliaan Tuhan, dan langkah iman berikutnya.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-blue-900/10 border border-blue-500/20 rounded-lg p-4 mt-4">
+                        <p class="text-xs text-blue-200/70 italic">
+                            "Kartu ini bukan untuk permainan, melainkan untuk membuka pintu hati yang seringkali terkunci dalam percakapan sehari-hari."
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                    <span class="text-xs text-gray-500 uppercase tracking-wider">Format: Digital & Print</span>
+                    <button class="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-2 transition-colors group-hover:translate-x-1 duration-300">
+                        Lihat Contoh Kartu <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Faith Metric -->
+            <div class="card-luxury rounded-3xl p-8 hover-lift reveal group">
+                <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-amber-900/20 to-orange-900/20 mb-6 flex items-center justify-center border border-white/5 group-hover:border-amber-500/30 transition-colors relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23f59e0b\' fill-opacity=\'0.05\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M0 40L40 0H20L0 20M40 40V20L20 40\'/%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+                    <div class="text-center p-8 relative z-10">
+                        <i data-lucide="compass" class="w-16 h-16 text-amber-500/60 mx-auto mb-4"></i>
+                        <p class="font-serif text-2xl text-amber-200/80">Faith Metric</p>
+                        <p class="text-sm text-amber-300/50 mt-2">Alat Evaluasi Pertumbuhan Rohani</p>
+                    </div>
+                </div>
+                
+                <h3 class="font-serif text-2xl mb-4 text-white">Faith Metric</h3>
+                
+                <div class="space-y-4 text-gray-400 mb-6">
+                    <p class="leading-relaxed">
+                        Sistem penilaian komprehensif untuk memantau dan merayakan perkembangan iman secara objektif. Bukan untuk membandingkan dengan orang lain, melainkan untuk melihat jejak kasih karunia Allah dalam perjalanan pribadi.
+                    </p>
+                    
+                    <div class="border-t border-white/10 pt-4 mt-4">
+                        <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-3">Dimensi Pengukuran:</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-amber-900/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="book-open" class="w-4 h-4 text-amber-500"></i>
+                                </div>
+                                <div>
+                                    <span class="text-gray-300 font-semibold block">Intimasi dengan Firman</span>
+                                    <span class="text-xs">Frekuensi dan kedalaman membaca Alkitab, meditasi, serta penaatan terhadap kebenaran yang ditemukan.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-amber-900/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="message-circle" class="w-4 h-4 text-amber-500"></i>
+                                </div>
+                                <div>
+                                    <span class="text-gray-300 font-semibold block">Kehidupan Doa</span>
+                                    <span class="text-xs">Kualitas persekutuan pribadi, kejujuran dalam doa, dan konsistensi mendengarkan suara Tuhan.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-amber-900/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="heart-handshake" class="w-4 h-4 text-amber-500"></i>
+                                </div>
+                                <div>
+                                    <span class="text-gray-300 font-semibold block">Relasi dan Komunitas</span>
+                                    <span class="text-xs">Kemampuan membuka diri, menerima koreksi, mengasihi yang sulit, dan kontribusi pada tubuh Kristus.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-amber-900/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="trending-up" class="w-4 h-4 text-amber-500"></i>
+                                </div>
+                                <div>
+                                    <span class="text-gray-300 font-semibold block">Stewardship & Pelayanan</span>
+                                    <span class="text-xs">Penggunaan waktu, talenta, dan harta untuk pekerjaan Tuhan serta kesediaan melayani tanpa pamrih.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-amber-900/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="shield" class="w-4 h-4 text-amber-500"></i>
+                                </div>
+                                <div>
+                                    <span class="text-gray-300 font-semibold block">Integritas Karakter</span>
+                                    <span class="text-xs">Konsistensi antara ucapan dan tindakan, ketahanan dalam godaan, dan sikap hati saat tidak dipandang.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-amber-900/10 border border-amber-500/20 rounded-lg p-4 mt-4">
+                        <p class="text-xs text-amber-200/70 italic">
+                            "Faith Metric bukan alat untuk merasa cukup baik atau gagal. Ia adalah cermin untuk melihat di mana Roh Kudus sedang bekerja, dan di mana kita masih butuh kasih karunia untuk bertumbuh."
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                    <span class="text-xs text-gray-500 uppercase tracking-wider">Format: Workbook Digital + Jurnal Refleksi</span>
+                    <button class="text-amber-400 hover:text-amber-300 text-sm flex items-center gap-2 transition-colors group-hover:translate-x-1 duration-300">
+                        Unduh Gratis <i data-lucide="download" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Note -->
+        <div class="mt-16 text-center reveal">
+            <div class="inline-block glass px-8 py-6 rounded-2xl border border-yellow-900/20 max-w-3xl">
+                <i data-lucide="info" class="w-6 h-6 text-yellow-500/80 mx-auto mb-3"></i>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Sumber daya ini tersedia untuk digunakan secara bebas dalam konteks pribadi, kelompok kecil, atau pelayanan gereja. 
+                    Tidak ada biaya atau kewajiban finansial apapun — <span class="text-yellow-500/80">bagikan kepada siapapun yang membutuhkan</span>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- Mentoring Section -->
+    <section id="mentoring" class="py-24 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-yellow-900/5 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <p class="text-yellow-500/80 text-sm uppercase tracking-widest mb-4">Mentoring</p>
+                    <h2 class="font-serif text-4xl md:text-5xl text-gradient mb-6">Mari Berkolaborasi</h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        Tersedia untuk personal mentoring, corporate training, dan retreat rohani. Booking minimal 2 minggu sebelumnya untuk persiapan yang optimal.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-900/20 flex items-center justify-center border border-yellow-600/30 flex-shrink-0">
+                                <i data-lucide="user" class="w-5 h-5 text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Personal Mentoring</h4>
+                                <p class="text-sm text-gray-400">Sesi one-on-one untuk pengembangan karakter dan kepemimpinan rohani</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-900/20 flex items-center justify-center border border-yellow-600/30 flex-shrink-0">
+                                <i data-lucide="building-2" class="w-5 h-5 text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Corporate Training</h4>
+                                <p class="text-sm text-gray-400">Pelatihan kepemimpinan berbasis nilai-nilai rohani untuk organisasi</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-900/20 flex items-center justify-center border border-yellow-600/30 flex-shrink-0">
+                                <i data-lucide="mountain" class="w-5 h-5 text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Retreat Rohani</h4>
+                                <p class="text-sm text-gray-400">Pembimbingan dalam setting intensif untuk pertemuan mendalam dengan Tuhan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <div class="glass rounded-3xl p-8 border border-yellow-900/20">
+                        <div class="flex items-center gap-4 mb-6 pb-6 border-b border-yellow-900/20">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-600/20 to-yellow-900/20 flex items-center justify-center">
+                                <i data-lucide="clock" class="w-8 h-8 text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Jadwal Tersedia</p>
+                                <p class="text-white font-serif text-xl">Senin — Jumat</p>
+                                <p class="text-yellow-500">08:00 — 17:00 WIB</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-600/20 to-blue-900/20 flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-8 h-8 text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Lokasi</p>
+                                <p class="text-white font-serif text-xl">Online / On-site</p>
+                                <p class="text-blue-400">Surakarta & Sekitarnya</p>
+                            </div>
+                        </div>
+                        
+                        <a href="https://wa.me/6281225047599" target="_blank" class="block w-full bg-gradient-to-r from-green-600/20 to-green-900/20 border border-green-600/30 hover:border-green-500 text-green-400 text-center py-4 rounded-xl transition-all hover:shadow-lg hover:shadow-green-900/20 flex items-center justify-center gap-2 group">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            <span class="font-semibold">Booking via WhatsApp</span>
+                            <span class="text-sm opacity-70">+62 812-2504-7599</span>
+                        </a>
+                        <p class="text-center text-xs text-gray-500 mt-3">Respons lebih cepat untuk jadwal mentoring</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p class="footer-logo font-serif">Ps. Yanto Goutama</p>
-        <p class="footer-text">Spiritual Mentor & Leadership Coach</p>
-        <p class="footer-text mt-4">© 2026</p>
-    </footer>
-
-    <!-- Modal -->
-    <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-        <div class="bg-[#faf9f6] max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 md:p-12 relative">
-            <button onclick="closeModal()" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-colors">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
+    <footer class="border-t border-yellow-900/20 bg-black/50 backdrop-blur-xl pt-16 pb-8 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full border border-yellow-600/30 flex items-center justify-center bg-gradient-to-br from-yellow-900/20 to-transparent">
+                            <span class="font-serif text-xl text-yellow-500">YG</span>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-xl text-gradient">Ps. Yanto Goutama</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+                        Membangun pemimpin berkarakter melalui teologia yang mendalam dan mentoring yang personal. Dari teknik ke transformasi, dari tugas ke panggilan.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm">Navigasi</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#beranda" class="hover:text-yellow-500 transition-colors">Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-yellow-500 transition-colors">Tentang</a></li>
+                        <li><a href="#teologia" class="hover:text-yellow-500 transition-colors">Teologia Gratis</a></li>
+                        <li><a href="#koleksi" class="hover:text-yellow-500 transition-colors">Koleksi</a></li>
+                        <li><a href="#mentoring" class="hover:text-yellow-500 transition-colors">Mentoring</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm">Kontak</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-yellow-500"></i>
+                            +62 812-2504-7599
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-yellow-500"></i>
+                            Surakarta, Indonesia
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="clock" class="w-4 h-4 text-yellow-500"></i>
+                            Senin - Jumat, 08:00 - 17:00 WIB
+                        </li>
+                    </ul>
+                </div>
+            </div>
             
-            <div id="modalContent">
-                <!-- Content injected via JS -->
+            <div class="border-t border-yellow-900/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-gray-600">&copy; 2026 Ps. Yanto Goutama. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-8 h-8 rounded-full border border-yellow-900/30 flex items-center justify-center text-gray-400 hover:text-yellow-500 hover:border-yellow-500 transition-all">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full border border-yellow-900/30 flex items-center justify-center text-gray-400 hover:text-yellow-500 hover:border-yellow-500 transition-all">
+                        <i data-lucide="youtube" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full border border-yellow-900/30 flex items-center justify-center text-gray-400 hover:text-yellow-500 hover:border-yellow-500 transition-all">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
+    </footer>
 
     <script>
-        // Data
-        const iceBreakerData = [
-            {
-                category: "Purpose",
-                title: "Definisi Sukses",
-                question: "Apa definisi sukses menurut Anda? Apakah definisi tersebut berasal dari Anda sendiri atau dari ekspektasi orang lain?",
-                purpose: "Membuka wawasan tentang value system yang menjadi fondasi keputusan-keputusan hidup.",
-                steps: [
-                    "Berikan waktu 2 menit untuk menulis definisi sukses",
-                    "Tanyakan: 'Dari mana Anda belajar definisi ini?'",
-                    "Eksplorasi perbedaan sukses duniawi vs kekal",
-                    "Identifikasi gap ekspektasi vs panggilan personal"
-                ],
-                reflection: "Sukses sejati adalah ketika Anda bisa berdiri di hadapan Sang Pencipta dan mendengar 'Hai hambaku yang baik dan setia'."
-            },
-            {
-                category: "Legacy",
-                title: "Legacy Check",
-                question: "Jika hidup Anda berakhir hari ini, apa warisan yang ingin Anda tinggalkan untuk generasi berikutnya?",
-                purpose: "Memaksa pemimpin berpikir jangka panjang melampaui pencapaian material.",
-                steps: [
-                    "Visualisasi upacara peringatan",
-                    "Bedah antara achievement vs impact",
-                    "Identifikasi 3 nilai inti yang ingin diwariskan",
-                    "Buat rencana konkret menanamkan nilai tersebut"
-                ],
-                reflection: "Warisan terbesar bukan apa yang Anda kumpulkan, tetapi apa yang Anda berikan."
-            },
-            {
-                category: "Courage",
-                title: "Fear Factor",
-                question: "Ketakutan terbesar apa yang menghalangi Anda melangkah ke level berikutnya?",
-                purpose: "Mengungkap fear yang tersembunyi di balik alasan-alasan logis.",
-                steps: [
-                    "Identifikasi keputusan besar yang tertunda",
-                    "Tanyakan 'Dan kemudian apa?' hingga menemukan fear inti",
-                    "Bedah fear of failure vs fear of success",
-                    "Buat rencana mitigasi risk"
-                ],
-                reflection: "Ketakutan yang tidak dihadapi akan menjadi penjara yang nyaman."
-            },
-            {
-                category: "Spiritual Growth",
-                title: "Faith Metric",
-                question: "Bagaimana Anda mengukur pertumbuhan spiritual dalam 6 bulan terakhir?",
-                purpose: "Menggeser metrik spiritual dari aktivitas religius ke transformasi karakter.",
-                steps: [
-                    "Review bukti pertumbuhan karakter",
-                    "Identifikasi dead zone rohani",
-                    "Evaluasi kualitas vs quantity",
-                    "Set 3 indikator pertumbuhan konkret"
-                ],
-                reflection: "Pelayanan yang berkualitas hanya datang dari kehidupan rohani yang dalam."
-            },
-            {
-                category: "Wisdom",
-                title: "Decision Point",
-                question: "Keputusan terberat apa yang sedang dihadapi? Apa yang menghambat memutuskan?",
-                purpose: "Membedakan butuh informasi lebih vs butuh keberanian.",
-                steps: [
-                    "Clarify jenis keputusan",
-                    "Tanya: 'Apa yang sudah cukup diketahui?'",
-                    "Identifikasi worst case scenario",
-                    "Set deadline konkret"
-                ],
-                reflection: "Kebijaksanaan bukan tentang kepastian 100%, tetapi langkah faith dengan persiapan matang."
-            },
-            {
-                category: "Rest",
-                title: "Sabbath Moment",
-                question: "Kapan terakhir kali Anda benar-benar merasa tenang dan hadir sepenuhnya?",
-                purpose: "Mendiagnosis hurry sickness dan kebusakan spiritual.",
-                steps: [
-                    "Recall momen tenang terakhir",
-                    "Identifikasi elemen restorative",
-                    "Audit unscheduled time",
-                    "Desain Sabbath ritual"
-                ],
-                reflection: "Kemampuan beristirahat adalah tanda kepercayaan pada Tuhan."
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+
+        // Accordion toggle
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close all others
+                document.querySelectorAll('.accordion-content').forEach(el => {
+                    el.classList.remove('active');
+                    el.style.maxHeight = null;
+                });
+                document.querySelectorAll('[id^="icon-"]').forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                });
+                
+                // Open clicked
+                content.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(180deg)';
             }
-        ];
-
-        // Modal Functions
-        function openModal(index) {
-            const data = iceBreakerData[index];
-            const modal = document.getElementById('modal');
-            const content = document.getElementById('modalContent');
-            
-            content.innerHTML = `
-                <p class="text-xs tracking-[0.3em] uppercase text-[#a67c52] mb-4">${data.category}</p>
-                <h2 class="font-serif text-4xl md:text-5xl mb-6">${data.title}</h2>
-                
-                <div class="border-l-2 border-[#a67c52] pl-6 mb-8">
-                    <p class="font-serif text-xl italic text-gray-700">"${data.question}"</p>
-                </div>
-                
-                <div class="mb-8">
-                    <h3 class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-3">Tujuan Sesi</h3>
-                    <p class="text-gray-600 leading-relaxed">${data.purpose}</p>
-                </div>
-                
-                <div class="mb-8">
-                    <h3 class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-4">Panduan</h3>
-                    <div class="space-y-3">
-                        ${data.steps.map((step, i) => `
-                            <div class="flex gap-4">
-                                <span class="w-6 h-6 rounded-full bg-[#2c2c2c] text-white text-xs flex items-center justify-center flex-shrink-0">${i + 1}</span>
-                                <p class="text-gray-600 text-sm pt-0.5">${step}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 p-6 mb-8">
-                    <h3 class="text-xs tracking-[0.2em] uppercase text-[#a67c52] mb-3">Refleksi</h3>
-                    <p class="text-gray-600 text-sm italic">${data.reflection}</p>
-                </div>
-                
-                <a href="https://wa.me/6281225047599" target="_blank" class="btn-primary w-full justify-center">
-                    Jadwalkan Sesi Ini
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-            `;
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = '';
-        }
+        // Scroll reveal animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-        // Close on backdrop click
-        document.getElementById('modal').addEventListener('click', (e) => {
-            if (e.target === e.currentTarget) closeModal();
-        });
-
-        // Close on Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // Cursor effect
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
-
-        // Hover effect on interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .grid-item');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorOutline.style.transform = 'scale(1.5)';
-                cursorOutline.style.opacity = '0.5';
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
-            el.addEventListener('mouseleave', () => {
-                cursorOutline.style.transform = 'scale(1)';
-                cursorOutline.style.opacity = '1';
-            });
-        });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
         // Navbar scroll effect
+        let lastScroll = 0;
         const navbar = document.getElementById('navbar');
+        
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('nav-scrolled');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.add('shadow-yellow-900/5');
             } else {
-                navbar.classList.remove('nav-scrolled');
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.remove('shadow-yellow-900/5');
             }
+            
+            lastScroll = currentScroll;
         });
 
-        // Scroll animations
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero animations
-        gsap.to('.hero-subtitle', {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: 0.2,
-            ease: 'power2.out'
-        });
-        
-        gsap.to('.hero-title', {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: 0.4,
-            ease: 'power2.out'
-        });
-        
-        gsap.to('.hero-desc', {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: 0.6,
-            ease: 'power2.out'
-        });
-
-        // Reveal animations
-        gsap.utils.toArray('.reveal').forEach(element => {
-            gsap.fromTo(element, 
-                { opacity: 0, y: 40 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: element,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse'
-                    }
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-            );
-        });
-
-        // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        let mobileMenuOpen = false;
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            // Simple alert for mobile - you can expand this
-            if (!mobileMenuOpen) {
-                alert('Menu: Tentang | Koleksi | Kontak | Booking Sesi');
-            }
+            });
         });
     </script>
 </body>
