@@ -834,12 +834,12 @@
 
 <div class="section-divider max-w-4xl mx-auto"></div>
 
-    <!-- MODAL ICE BREAKER - SEDERHANA -->
+    <!-- MODAL ICE BREAKER - LENGKAP 52 KARTU -->
 <div id="iceModal" style="display:none;position:fixed;inset:0;background:#0a0a0f;z-index:100;overflow-y:auto;padding:20px;">
     <div style="max-width:1200px;margin:0 auto;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(59,130,246,0.3);position:sticky;top:0;background:#0a0a0f;z-index:10;">
             <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#60a5fa;">Ice Breaker Cards</h2>
-            <button onclick="document.getElementById('iceModal').style.display='none'" style="background:none;border:1px solid rgba(255,255,255,0.2);color:#9ca3af;padding:8px 16px;border-radius:8px;cursor:pointer;">Tutup ✕</button>
+            <button onclick="closeIce()" style="background:none;border:1px solid rgba(255,255,255,0.2);color:#9ca3af;padding:8px 16px;border-radius:8px;cursor:pointer;">Tutup ✕</button>
         </div>
         
         <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
@@ -849,56 +849,186 @@
             <button onclick="showIceTab(4)" id="iceBtn4" style="padding:8px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#9ca3af;cursor:pointer;">Level 4</button>
         </div>
 
+        <!-- LEVEL 1: 13 Kartu -->
         <div id="iceTab1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;">
-            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 1')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Jika Anda bisa mendeskripsikan diri Anda dalam tiga kata, kata-kata apa yang akan Anda pilih dan mengapa?</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 1 - Refleksi Diri</span>';}">
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Jika Anda bisa mendeskripsikan diri Anda dalam tiga kata, kata-kata apa yang akan Anda pilih dan mengapa?')">
                 <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 1 - Refleksi Diri</span>
             </div>
-            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 2')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Ceritakan satu momen dalam hidup Anda ketika Anda merasa paling hidup, paling menjadi diri sendiri.</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 2 - Momen Berharga</span>';}">
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Ceritakan satu momen dalam hidup Anda ketika Anda merasa paling hidup, paling menjadi diri sendiri.')">
                 <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 2 - Momen Berharga</span>
             </div>
-            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 3')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Bagaimana Anda mendefinisikan sukses? Apakah definisi Anda berubah dari 10 tahun lalu?</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 3 - Definisi Sukses</span>';}">
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Bagaimana Anda mendefinisikan sukses? Apakah definisi Anda berubah dari 10 tahun lalu?')">
                 <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 3 - Definisi Sukses</span>
             </div>
-            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 4')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Apa ketakutan terbesar Anda saat ini? Bagaimana Anda menghadapinya?</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 4 - Ketakutan Terbesar</span>';}">
-                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 4 - Ketakutan Terbesar</span>
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa ketakutan terbesar Anda saat ini? Bagaimana Anda menghadapinya?')">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 4 - Ketakutan</span>
             </div>
-            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 5')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Deskripsikan hari sempurna Anda. Dimulai dari bangun tidur sampai tidur lagi.</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 5 - Hari Sempurna</span>';}">
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Deskripsikan hari sempurna Anda. Dimulai dari bangun tidur sampai tidur lagi.')">
                 <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 5 - Hari Sempurna</span>
             </div>
-            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 6')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Satu nilai atau tradisi dari keluarga Anda yang ingin Anda lanjutkan? Satu yang ingin Anda ubah?</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 6 - Warisan Keluarga</span>';}">
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Satu nilai dari keluarga yang ingin Anda lanjutkan? Satu yang ingin Anda ubah?')">
                 <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 6 - Warisan Keluarga</span>
             </div>
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa hal sederhana yang membuat Anda bahagia baru-baru ini?')">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 7 - Kebahagiaan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Jika Anda bisa mengubah satu keputusan dalam hidup Anda, apa yang akan Anda pilih?')">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 8 - Perubahan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa kekuatan terbesar Anda yang seringkali tidak disadari orang lain?')">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 9 - Kekuatan Tersembunyi</span>
+            </div>
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Bagaimana cara Anda mengisi ulang baterai ketika merasa lelah?')">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 10 - Istirahat</span>
+            </div>
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Siapa orang yang paling berpengaruh dalam membentuk siapa Anda sekarang?')">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 11 - Mentor</span>
+            </div>
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa mimpi atau tujuan yang sedang Anda kejar saat ini?')">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 12 - Mimpi</span>
+            </div>
+            <div class="ice-card" style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa satu hal yang Anda syukuri hari ini, meski mungkin kecil?')">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 13 - Syukur</span>
+            </div>
         </div>
 
+        <!-- LEVEL 2: 13 Kartu -->
         <div id="iceTab2" style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;">
-            <div style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 14')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Ceritakan momen pertama kali Anda merasa benar-benar bertemu dengan Tuhan.</p>';}else{this.innerHTML='<span style=\'color:#a78bfa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 14 - Pertemuan Pertama</span>';}">
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Ceritakan momen pertama kali Anda merasa benar-benar bertemu dengan Tuhan.')">
                 <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 14 - Pertemuan Pertama</span>
             </div>
-            <div style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 15')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Bagaimana Anda biasanya mendengar suara Tuhan?</p>';}else{this.innerHTML='<span style=\'color:#a78bfa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 15 - Suara Tuhan</span>';}">
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Bagaimana Anda biasanya mendengar suara Tuhan?')">
                 <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 15 - Suara Tuhan</span>
             </div>
-        </div>
-
-        <div id="iceTab3" style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;">
-            <div style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 27')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Apa kegagalan terbesar dalam hidup Anda? Bagaimana Tuhan menggunakannya?</p>';}else{this.innerHTML='<span style=\'color:#c084fc;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 27 - Kegagalan</span>';}">
-                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 27 - Kegagalan</span>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa zona nyaman iman Anda? Bagian mana yang paling sulit dieksplorasi?')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 16 - Zona Nyaman</span>
+            </div>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Ceritakan satu doa yang dijawab Tuhan dengan cara yang tidak Anda duga.')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 17 - Doa Terjawab</span>
+            </div>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Pernahkah Anda mengalami kering rohani? Bagaimana Tuhan mempertemukan Anda kembali?')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 18 - Kering Rohani</span>
+            </div>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa ayat Alkitab yang paling sering Anda pegang dalam masa sulit?')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 19 - Ayat Pengharapan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Satu karakter Kristus yang paling ingin Anda kembangkan tahun ini?')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 20 - Karakter Kristus</span>
+            </div>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa yang membuat Anda merasa di rumah dalam persekutuan dengan orang percaya?')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 21 - Persekutuan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Pernahkah Anda menyaksikan atau mengalami mukjizat? Ceritakan.')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 22 - Mukjizat</span>
+            </div>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Bagaimana iman Anda berbeda sekarang dibandingkan 5 tahun lalu?')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 23 - Perubahan Iman</span>
+            </div>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Satu hal tentang Tuhan yang masih Anda pertanyakan atau sulit dipahami?')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 24 - Pertanyaan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Kapan terakhir kali Anda merasakan kasih karunia Tuhan secara nyata?')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 25 - Kasih Karunia</span>
+            </div>
+            <div class="ice-card" style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa yang paling sulit Anda serahkan kepada Tuhan saat ini?')">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 26 - Penyerahan</span>
             </div>
         </div>
 
+        <!-- LEVEL 3: 13 Kartu -->
+        <div id="iceTab3" style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;">
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa kegagalan terbesar dalam hidup Anda? Bagaimana Tuhan menggunakannya?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 27 - Kegagalan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Bagian mana dari diri Anda yang paling sulit Anda terima?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 28 - Penerimaan Diri</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Siapa yang paling sulit Anda ampuni? Apa langkah kecil menuju pengampunan?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 29 - Pengampunan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Kapan Anda merasa paling sendirian meski dikelilingi orang?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 30 - Kesepian</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa dosa masa lalu yang masih menghantui Anda? Percayakah Allah sudah mengampuni?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 31 - Rasa Bersalah</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Seberapa besar Anda percaya bahwa Anda dicintai Tuhan apa adanya?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 32 - Identitas</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa yang Anda sembunyikan dari orang lain karena takut dihakimi?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 33 - Kerentanan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa kehilangan terbesar dalam hidup Anda? Bagaimana iman Anda berubah?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 34 - Kehilangan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Pernahkah Anda marah pada Tuhan? Bagaimana Anda mengekspresikannya?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 35 - Kemarahan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa yang membuat Anda takut akan penolakan jika orang benar-benar mengenal Anda?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 36 - Ketakutan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Luka batin apa yang masih perlu disembuhkan? Bagaimana Tuhan menyembuhkannya?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 37 - Penyembuhan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Di area mana Anda merasa tidak cukup? Bagaimana Tuhan mengingatkan Anda?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 38 - Kecukupan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa area hidup yang sedang Tuhan panggil untuk bertobat sepenuhnya?')">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 39 - Pertobatan</span>
+            </div>
+        </div>
+
+        <!-- LEVEL 4: 13 Kartu -->
         <div id="iceTab4" style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;">
-            <div style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 40')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Apa panggilan spesifik Tuhan untuk Anda di musim hidup ini?</p>';}else{this.innerHTML='<span style=\'color:#fbbf24;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 40 - Panggilan Spesifik</span>';}">
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa panggilan spesifik Tuhan untuk Anda di musim hidup ini?')">
                 <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 40 - Panggilan Spesifik</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa yang ingin Anda ingat orang tentang Anda? Apa warisan rohani yang ingin Anda tinggalkan?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 41 - Legasi</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa langkah iman besar yang sedang Tuhan minta Anda ambil, meski belum siap?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 42 - Langkah Iman</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa talenta yang menurut Anda kecil tapi bisa berdampak besar bagi kerajaan-Nya?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 43 - Talenta</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa yang perlu Anda korbankan untuk mengikuti panggilan Tuhan sepenuh hati?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 44 - Pengorbanan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Bagaimana Anda melihat diri Anda berkontribusi pada pekerjaan Tuhan 10 tahun lagi?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 45 - Visi</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Siapa yang perlu Anda jadikan mentor untuk mencapai potensi penuh dalam Kristus?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 46 - Mentor</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Di mana Anda melihat kebutuhan terbesar dalam gereja, dan bagaimana memenuhinya?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 47 - Pelayanan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Isu keadilan apa yang membebani hati Anda, dan bagaimana Tuhan memanggil Anda bertindak?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 48 - Keadilan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa yang ingin Anda wariskan kepada generasi berikutnya tentang iman?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 49 - Warisan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Jika hidup Anda adalah satu-satunya Alkitab yang dibaca, apa yang mereka pelajari?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 50 - Kesaksian Hidup</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Apa yang Tuhan minta Anda lakukan yang tidak masuk akal, tapi Anda tahu itu dari-Nya?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 51 - Ketaatan</span>
+            </div>
+            <div class="ice-card" style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="flipCard(this,'Ketika Anda berdiri di hadapan Kristus, apa yang paling ingin Anda dengar dari Dia?')">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 52 - Pengharapan Akhir</span>
             </div>
         </div>
     </div>
 </div>
 
-<!-- MODAL FAITH METRIC - SEDERHANA -->
+<!-- MODAL FAITH METRIC - LENGKAP 5 DIMENSI -->
 <div id="faithModal" style="display:none;position:fixed;inset:0;background:#0a0a0f;z-index:100;overflow-y:auto;padding:20px;">
-    <div style="max-width:600px;margin:0 auto;">
+    <div style="max-width:700px;margin:0 auto;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(245,158,11,0.3);position:sticky;top:0;background:#0a0a0f;z-index:10;">
             <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fbbf24;">Faith Metric</h2>
-            <button onclick="document.getElementById('faithModal').style.display='none'" style="background:none;border:1px solid rgba(255,255,255,0.2);color:#9ca3af;padding:8px 16px;border-radius:8px;cursor:pointer;">Tutup ✕</button>
+            <button onclick="closeFaith()" style="background:none;border:1px solid rgba(255,255,255,0.2);color:#9ca3af;padding:8px 16px;border-radius:8px;cursor:pointer;">Tutup ✕</button>
         </div>
 
         <div style="background:rgba(146,64,14,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:12px;padding:16px;margin-bottom:20px;">
@@ -906,39 +1036,205 @@
         </div>
 
         <form id="faithForm" onsubmit="event.preventDefault(); calculateResult();">
+            
+            <!-- DIMENSI 1: Intimasi dengan Firman (3 pertanyaan) -->
             <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin-bottom:16px;">
                 <h3 style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin-bottom:16px;">1. Intimasi dengan Firman</h3>
                 
                 <div style="margin-bottom:16px;">
-                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya membaca Alkitab karena rindu mendengar suara Tuhan.</p>
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya membaca Alkitab karena rindu mendengar suara Tuhan, bukan karena kewajiban.</p>
                     <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                        <label style="cursor:pointer;"><input type="radio" name="q1" value="5" required style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
-                        <label style="cursor:pointer;"><input type="radio" name="q1" value="4" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
-                        <label style="cursor:pointer;"><input type="radio" name="q1" value="3" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
-                        <label style="cursor:pointer;"><input type="radio" name="q1" value="2" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
-                        <label style="cursor:pointer;"><input type="radio" name="q1" value="1" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q1" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q1" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q1" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q1" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q1" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
                     </div>
                 </div>
 
                 <div style="margin-bottom:16px;">
-                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya merenungkan dan mengaplikasikan Firman dalam kehidupan.</p>
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya merenungkan dan mengaplikasikan Firman dalam kehidupan sehari-hari.</p>
                     <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                        <label style="cursor:pointer;"><input type="radio" name="q2" value="5" required style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
-                        <label style="cursor:pointer;"><input type="radio" name="q2" value="4" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
-                        <label style="cursor:pointer;"><input type="radio" name="q2" value="3" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
-                        <label style="cursor:pointer;"><input type="radio" name="q2" value="2" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
-                        <label style="cursor:pointer;"><input type="radio" name="q2" value="1" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q2" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q2" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q2" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q2" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q2" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya menemukan transformasi saat membaca Alkitab, bukan hanya informasi.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d1q3" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q3" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q3" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q3" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d1q3" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
                     </div>
                 </div>
             </div>
 
-            <button type="submit" style="width:100%;padding:16px;background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;border-radius:12px;cursor:pointer;font-weight:600;">Lihat Hasil</button>
+            <!-- DIMENSI 2: Kehidupan Doa (3 pertanyaan) -->
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin-bottom:16px;">
+                <h3 style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin-bottom:16px;">2. Kehidupan Doa</h3>
+                
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Doa saya adalah percakapan dua arah, bukan hanya meminta.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d2q1" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q1" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q1" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q1" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q1" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya jujur membawa pergumulan dan emosi terdalam kepada Tuhan.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d2q2" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q2" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q2" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q2" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q2" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya merasakan hadirat Tuhan dalam doa, bukan hanya mengucapkan kata-kata.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d2q3" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q3" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q3" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q3" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d2q3" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIMENSI 3: Relasi dan Komunitas (3 pertanyaan) -->
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin-bottom:16px;">
+                <h3 style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin-bottom:16px;">3. Relasi dan Komunitas</h3>
+                
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya membuka diri secara autentik dalam komunitas, tidak menyembunyikan kelemahan.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d3q1" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q1" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q1" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q1" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q1" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya menerima koreksi dengan kerendahan hati dan mengasihi mereka yang sulit.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d3q2" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q2" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q2" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q2" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q2" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya merasa memiliki peran dalam tubuh Kristus, bukan hanya hadir.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d3q3" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q3" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q3" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q3" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d3q3" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIMENSI 4: Stewardship & Pelayanan (3 pertanyaan) -->
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin-bottom:16px;">
+                <h3 style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin-bottom:16px;">4. Stewardship & Pelayanan</h3>
+                
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya menggunakan waktu, talenta, dan harta untuk pekerjaan Tuhan.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d4q1" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q1" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q1" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q1" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q1" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya melayani dengan sukacita tanpa pamrih atau mencari pengakuan.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d4q2" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q2" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q2" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q2" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q2" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya tahu tempat pelayanan saya dan melayani dengan konsisten.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d4q3" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q3" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q3" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q3" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d4q3" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIMENSI 5: Integritas Karakter (3 pertanyaan) -->
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin-bottom:16px;">
+                <h3 style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin-bottom:16px;">5. Integritas Karakter</h3>
+                
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya konsisten antara ucapan dan tindakan, di depan umum maupun sendiri.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d5q1" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q1" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q1" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q1" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q1" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya memiliki ketahanan dalam godaan dan bertanggung jawab atas kesalahan.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d5q2" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q2" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q2" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q2" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q2" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya memiliki hati yang rendah hati dan terbuka untuk pertumbuhan.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="d5q3" value="5" required style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q3" value="4" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q3" value="3" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q3" value="2" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="d5q3" value="1" style="display:none;"><span class="radio-btn" style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" style="width:100%;padding:16px;background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;border-radius:12px;cursor:pointer;font-weight:600;">Lihat Hasil Evaluasi</button>
         </form>
 
+        <!-- Hasil -->
         <div id="resultBox" style="display:none;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin-top:20px;">
             <h3 style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-bottom:16px;">Hasil Evaluasi</h3>
             <div id="resultText"></div>
-            <button onclick="document.getElementById('resultBox').style.display='none';document.getElementById('faithForm').reset();" style="margin-top:16px;padding:8px 16px;background:none;border:1px solid rgba(255,255,255,0.2);color:#9ca3af;border-radius:8px;cursor:pointer;">← Ulangi</button>
+            <button onclick="resetForm()" style="margin-top:16px;padding:8px 16px;background:none;border:1px solid rgba(255,255,255,0.2);color:#9ca3af;border-radius:8px;cursor:pointer;">← Ulangi Evaluasi</button>
         </div>
     </div>
 </div>
@@ -955,6 +1251,17 @@ function openFaithMetric() {
     document.body.style.overflow = 'hidden';
 }
 
+// Fungsi tutup modal dengan kembalikan scroll
+function closeIce() {
+    document.getElementById('iceModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function closeFaith() {
+    document.getElementById('faithModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
 // Tab switching Ice Breaker
 function showIceTab(n) {
     for(let i=1; i<=4; i++) {
@@ -964,9 +1271,25 @@ function showIceTab(n) {
         document.getElementById('iceBtn'+i).style.border = '1px solid rgba(255,255,255,0.2)';
     }
     document.getElementById('iceTab'+n).style.display = 'grid';
-    document.getElementById('iceBtn'+n).style.background = n===1?'#3b82f6':n===2?'#8b5cf6':n===3?'#a855f7':'#f59e0b';
+    const colors = ['#3b82f6', '#8b5cf6', '#a855f7', '#f59e0b'];
+    document.getElementById('iceBtn'+n).style.background = colors[n-1];
     document.getElementById('iceBtn'+n).style.color = 'white';
     document.getElementById('iceBtn'+n).style.border = 'none';
+}
+
+// Flip card
+function flipCard(el, question) {
+    if(el.dataset.flipped === 'true') {
+        el.innerHTML = '<span style="color:' + el.querySelector('span').style.color + ';font-family:Cormorant Garamond,serif;font-size:1.25rem;">' + el.querySelector('span').innerText + '</span>';
+        el.dataset.flipped = 'false';
+    } else {
+        const originalText = el.querySelector('span').innerText;
+        const color = el.querySelector('span').style.color;
+        el.innerHTML = '<p style="color:#e2e8f0;font-size:0.95rem;text-align:center;">' + question + '</p>';
+        el.dataset.flipped = 'true';
+        el.dataset.original = originalText;
+        el.dataset.color = color;
+    }
 }
 
 // Kalkulator Faith Metric
@@ -990,23 +1313,41 @@ function calculateResult() {
     else if(pct>=40) msg = 'Ada area yang membutuhkan perhatian. Jangan ragu mencari mentor.';
     else msg = 'Ini kesempatan untuk restart. Tuhan selalu menyambut yang bertobat.';
     
-    document.getElementById('resultText').innerHTML = '<p style="font-size:2rem;color:#fbbf24;margin-bottom:8px;">'+pct+'%</p><p style="color:#d1d5db;">'+msg+'</p>';
+    document.getElementById('resultText').innerHTML = 
+        '<p style="font-size:3rem;color:#fbbf24;margin-bottom:8px;font-weight:bold;">' + pct + '%</p>' +
+        '<p style="color:#d1d5db;margin-bottom:16px;">' + msg + '</p>' +
+        '<p style="color:#9ca3af;font-size:0.875rem;">Skor: ' + total + '/' + max + '</p>';
+    
     document.getElementById('resultBox').style.display = 'block';
+    form.style.display = 'none';
+}
+
+function resetForm() {
+    document.getElementById('faithForm').reset();
+    document.getElementById('resultBox').style.display = 'none';
+    document.getElementById('faithForm').style.display = 'block';
+    
+    // Reset radio button styles
+    document.querySelectorAll('.radio-btn').forEach(btn => {
+        btn.style.background = 'transparent';
+        btn.style.borderColor = 'rgba(255,255,255,0.2)';
+        btn.style.color = '#9ca3af';
+    });
 }
 
 // Style untuk radio button selected
-document.querySelectorAll('input[type="radio"]').forEach(radio => {
-    radio.addEventListener('change', function() {
-        const name = this.name;
-        document.querySelectorAll('input[name="'+name+'"]').forEach(r => {
+document.addEventListener('change', function(e) {
+    if(e.target.type === 'radio') {
+        const name = e.target.name;
+        document.querySelectorAll('input[name="' + name + '"]').forEach(r => {
             r.nextElementSibling.style.background = 'transparent';
             r.nextElementSibling.style.borderColor = 'rgba(255,255,255,0.2)';
             r.nextElementSibling.style.color = '#9ca3af';
         });
-        this.nextElementSibling.style.background = 'rgba(245,158,11,0.2)';
-        this.nextElementSibling.style.borderColor = '#fbbf24';
-        this.nextElementSibling.style.color = '#fbbf24';
-    });
+        e.target.nextElementSibling.style.background = 'rgba(245,158,11,0.2)';
+        e.target.nextElementSibling.style.borderColor = '#fbbf24';
+        e.target.nextElementSibling.style.color = '#fbbf24';
+    }
 });
 </script>
     
