@@ -834,6 +834,182 @@
 
 <div class="section-divider max-w-4xl mx-auto"></div>
 
+    <!-- MODAL ICE BREAKER - SEDERHANA -->
+<div id="iceModal" style="display:none;position:fixed;inset:0;background:#0a0a0f;z-index:100;overflow-y:auto;padding:20px;">
+    <div style="max-width:1200px;margin:0 auto;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(59,130,246,0.3);position:sticky;top:0;background:#0a0a0f;z-index:10;">
+            <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#60a5fa;">Ice Breaker Cards</h2>
+            <button onclick="document.getElementById('iceModal').style.display='none'" style="background:none;border:1px solid rgba(255,255,255,0.2);color:#9ca3af;padding:8px 16px;border-radius:8px;cursor:pointer;">Tutup ✕</button>
+        </div>
+        
+        <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
+            <button onclick="showIceTab(1)" id="iceBtn1" style="padding:8px 16px;border-radius:6px;border:none;background:#3b82f6;color:white;cursor:pointer;">Level 1</button>
+            <button onclick="showIceTab(2)" id="iceBtn2" style="padding:8px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#9ca3af;cursor:pointer;">Level 2</button>
+            <button onclick="showIceTab(3)" id="iceBtn3" style="padding:8px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#9ca3af;cursor:pointer;">Level 3</button>
+            <button onclick="showIceTab(4)" id="iceBtn4" style="padding:8px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#9ca3af;cursor:pointer;">Level 4</button>
+        </div>
+
+        <div id="iceTab1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;">
+            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 1')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Jika Anda bisa mendeskripsikan diri Anda dalam tiga kata, kata-kata apa yang akan Anda pilih dan mengapa?</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 1 - Refleksi Diri</span>';}">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 1 - Refleksi Diri</span>
+            </div>
+            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 2')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Ceritakan satu momen dalam hidup Anda ketika Anda merasa paling hidup, paling menjadi diri sendiri.</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 2 - Momen Berharga</span>';}">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 2 - Momen Berharga</span>
+            </div>
+            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 3')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Bagaimana Anda mendefinisikan sukses? Apakah definisi Anda berubah dari 10 tahun lalu?</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 3 - Definisi Sukses</span>';}">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 3 - Definisi Sukses</span>
+            </div>
+            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 4')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Apa ketakutan terbesar Anda saat ini? Bagaimana Anda menghadapinya?</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 4 - Ketakutan Terbesar</span>';}">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 4 - Ketakutan Terbesar</span>
+            </div>
+            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 5')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Deskripsikan hari sempurna Anda. Dimulai dari bangun tidur sampai tidur lagi.</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 5 - Hari Sempurna</span>';}">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 5 - Hari Sempurna</span>
+            </div>
+            <div style="background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 6')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Satu nilai atau tradisi dari keluarga Anda yang ingin Anda lanjutkan? Satu yang ingin Anda ubah?</p>';}else{this.innerHTML='<span style=\'color:#60a5fa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 6 - Warisan Keluarga</span>';}">
+                <span style="color:#60a5fa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 6 - Warisan Keluarga</span>
+            </div>
+        </div>
+
+        <div id="iceTab2" style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;">
+            <div style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 14')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Ceritakan momen pertama kali Anda merasa benar-benar bertemu dengan Tuhan.</p>';}else{this.innerHTML='<span style=\'color:#a78bfa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 14 - Pertemuan Pertama</span>';}">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 14 - Pertemuan Pertama</span>
+            </div>
+            <div style="background:rgba(76,29,149,0.2);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 15')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Bagaimana Anda biasanya mendengar suara Tuhan?</p>';}else{this.innerHTML='<span style=\'color:#a78bfa;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 15 - Suara Tuhan</span>';}">
+                <span style="color:#a78bfa;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 15 - Suara Tuhan</span>
+            </div>
+        </div>
+
+        <div id="iceTab3" style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;">
+            <div style="background:rgba(126,34,206,0.2);border:1px solid rgba(192,132,252,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 27')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Apa kegagalan terbesar dalam hidup Anda? Bagaimana Tuhan menggunakannya?</p>';}else{this.innerHTML='<span style=\'color:#c084fc;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 27 - Kegagalan</span>';}">
+                <span style="color:#c084fc;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 27 - Kegagalan</span>
+            </div>
+        </div>
+
+        <div id="iceTab4" style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;">
+            <div style="background:rgba(180,83,9,0.2);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;" onclick="if(this.innerHTML.includes('Kartu 40')){this.innerHTML='<p style=\'color:#e2e8f0;font-size:0.95rem;\'>Apa panggilan spesifik Tuhan untuk Anda di musim hidup ini?</p>';}else{this.innerHTML='<span style=\'color:#fbbf24;font-family:Cormorant Garamond,serif;font-size:1.25rem;\'>Kartu 40 - Panggilan Spesifik</span>';}">
+                <span style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;">Kartu 40 - Panggilan Spesifik</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL FAITH METRIC - SEDERHANA -->
+<div id="faithModal" style="display:none;position:fixed;inset:0;background:#0a0a0f;z-index:100;overflow-y:auto;padding:20px;">
+    <div style="max-width:600px;margin:0 auto;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(245,158,11,0.3);position:sticky;top:0;background:#0a0a0f;z-index:10;">
+            <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fbbf24;">Faith Metric</h2>
+            <button onclick="document.getElementById('faithModal').style.display='none'" style="background:none;border:1px solid rgba(255,255,255,0.2);color:#9ca3af;padding:8px 16px;border-radius:8px;cursor:pointer;">Tutup ✕</button>
+        </div>
+
+        <div style="background:rgba(146,64,14,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:12px;padding:16px;margin-bottom:20px;">
+            <p style="color:#9ca3af;font-size:0.875rem;">Jawablah dengan jujur. Skala: 1 = Sangat Setuju, 5 = Sangat Tidak Setuju</p>
+        </div>
+
+        <form id="faithForm" onsubmit="event.preventDefault(); calculateResult();">
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin-bottom:16px;">
+                <h3 style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin-bottom:16px;">1. Intimasi dengan Firman</h3>
+                
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya membaca Alkitab karena rindu mendengar suara Tuhan.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="q1" value="5" required style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="q1" value="4" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="q1" value="3" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="q1" value="2" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="q1" value="1" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <p style="color:#d1d5db;font-size:0.875rem;margin-bottom:8px;">Saya merenungkan dan mengaplikasikan Firman dalam kehidupan.</p>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <label style="cursor:pointer;"><input type="radio" name="q2" value="5" required style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">1</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="q2" value="4" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">2</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="q2" value="3" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">3</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="q2" value="2" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">4</span></label>
+                        <label style="cursor:pointer;"><input type="radio" name="q2" value="1" style="display:none;"><span style="display:block;padding:6px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.75rem;color:#9ca3af;">5</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" style="width:100%;padding:16px;background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);color:#fbbf24;border-radius:12px;cursor:pointer;font-weight:600;">Lihat Hasil</button>
+        </form>
+
+        <div id="resultBox" style="display:none;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin-top:20px;">
+            <h3 style="color:#fbbf24;font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-bottom:16px;">Hasil Evaluasi</h3>
+            <div id="resultText"></div>
+            <button onclick="document.getElementById('resultBox').style.display='none';document.getElementById('faithForm').reset();" style="margin-top:16px;padding:8px 16px;background:none;border:1px solid rgba(255,255,255,0.2);color:#9ca3af;border-radius:8px;cursor:pointer;">← Ulangi</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Fungsi buka modal
+function openIceBreaker() {
+    document.getElementById('iceModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function openFaithMetric() {
+    document.getElementById('faithModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Tab switching Ice Breaker
+function showIceTab(n) {
+    for(let i=1; i<=4; i++) {
+        document.getElementById('iceTab'+i).style.display = 'none';
+        document.getElementById('iceBtn'+i).style.background = 'transparent';
+        document.getElementById('iceBtn'+i).style.color = '#9ca3af';
+        document.getElementById('iceBtn'+i).style.border = '1px solid rgba(255,255,255,0.2)';
+    }
+    document.getElementById('iceTab'+n).style.display = 'grid';
+    document.getElementById('iceBtn'+n).style.background = n===1?'#3b82f6':n===2?'#8b5cf6':n===3?'#a855f7':'#f59e0b';
+    document.getElementById('iceBtn'+n).style.color = 'white';
+    document.getElementById('iceBtn'+n).style.border = 'none';
+}
+
+// Kalkulator Faith Metric
+function calculateResult() {
+    const form = document.getElementById('faithForm');
+    const data = new FormData(form);
+    let total = 0;
+    let count = 0;
+    
+    for(let [key,val] of data) {
+        total += parseInt(val);
+        count++;
+    }
+    
+    const max = count * 5;
+    const pct = Math.round((total/max)*100);
+    
+    let msg = '';
+    if(pct>=80) msg = 'Pertumbuhan Anda sangat baik! Teruslah menjadi berkat.';
+    else if(pct>=60) msg = 'Anda dalam jalur yang baik. Identifikasi satu area untuk ditingkatkan.';
+    else if(pct>=40) msg = 'Ada area yang membutuhkan perhatian. Jangan ragu mencari mentor.';
+    else msg = 'Ini kesempatan untuk restart. Tuhan selalu menyambut yang bertobat.';
+    
+    document.getElementById('resultText').innerHTML = '<p style="font-size:2rem;color:#fbbf24;margin-bottom:8px;">'+pct+'%</p><p style="color:#d1d5db;">'+msg+'</p>';
+    document.getElementById('resultBox').style.display = 'block';
+}
+
+// Style untuk radio button selected
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        const name = this.name;
+        document.querySelectorAll('input[name="'+name+'"]').forEach(r => {
+            r.nextElementSibling.style.background = 'transparent';
+            r.nextElementSibling.style.borderColor = 'rgba(255,255,255,0.2)';
+            r.nextElementSibling.style.color = '#9ca3af';
+        });
+        this.nextElementSibling.style.background = 'rgba(245,158,11,0.2)';
+        this.nextElementSibling.style.borderColor = '#fbbf24';
+        this.nextElementSibling.style.color = '#fbbf24';
+    });
+});
+</script>
+    
     <!-- Mentoring Section -->
     <section id="mentoring" class="py-24 px-4 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-yellow-900/5 to-transparent"></div>
